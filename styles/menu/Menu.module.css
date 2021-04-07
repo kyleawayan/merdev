@@ -10,3 +10,19 @@
   margin: auto;
   padding: 14px;
 }
+
+.usernameAndSignOut {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.usernameAndSignOut button {
+  height: 25px;
+}
+
+.username {
+  margin-right: 10px;
+  text-align: right;
+  vertical-align: middle;
+}
