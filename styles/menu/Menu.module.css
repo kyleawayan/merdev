@@ -1,0 +1,12 @@
+.menuContainerContainer {
+  height: 48px;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.menu {
+  position: relative;
+  max-width: var(--merdev-max-width);
+  margin: auto;
+  padding: 14px;
+}

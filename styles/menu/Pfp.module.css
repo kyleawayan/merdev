@@ -1,0 +1,12 @@
+.pfp {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  margin: 8px;
+}
+
+.pfp img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}

@@ -1,0 +1,10 @@
+.signInSignUp {
+  position: absolute;
+  right: 0px;
+  top: 0;
+  margin: 12px;
+}
+
+.signInSignUp button {
+  height: 25px;
+}

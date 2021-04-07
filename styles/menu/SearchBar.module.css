@@ -1,0 +1,16 @@
+.searchBarContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  top: 9px;
+  left: 0;
+}
+
+.searchBarContainer input {
+  height: 30px;
+  width: 60%;
+  max-width: 800px;
+  border: 1px solid #dbdbdb;
+}
