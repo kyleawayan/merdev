@@ -6,7 +6,7 @@ import HomePageDesign from "../components/homePage/HomePageDesign";
 
 export default function Home() {
   const auth = useAuth();
-
+//test
   return (
     <div>
       <div className="globalContainer">
