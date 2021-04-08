@@ -1,0 +1,11 @@
+.questionMakerEditor {
+  width: 70%;
+  height: 800px;
+}
+
+.questionTitleInput input {
+  width: 100%;
+  height: 50px;
+  font-size: 25px;
+  margin-bottom: 10px;
+}

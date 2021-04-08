@@ -23,7 +23,7 @@ a {
   box-sizing: border-box;
 }
 
-.container {
+.globalContainer {
   max-width: var(--merdev-max-width);
   margin: auto;
   padding: 14px;

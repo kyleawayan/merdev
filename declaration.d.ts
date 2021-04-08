@@ -4,6 +4,19 @@ interface QuestionCounters {
   views: number;
 }
 
+interface Comment {
+  userUid: string;
+  markdown: string;
+  timestamp: Date;
+}
+
+interface Answer {
+  userUid: string;
+  markdown: string;
+  timestamp: Date;
+  comments: Array<Comment>;
+}
+
 interface Question {
   title: string;
   tags: Array<string>;
@@ -11,4 +24,21 @@ interface Question {
   timestamp: Date;
   markdown: string;
   counters: QuestionCounters;
+  answers: Array<Answer>;
+  comments: Array<Comment>;
 }
+
+interface codeRendererProps {
+  language: string;
+  value: string;
+}
+
+interface inlineMapRendererProps {
+  value: string;
+}
+
+interface mathRendererProps {
+  value: string;
+}
+
+declare module "react-katex";
