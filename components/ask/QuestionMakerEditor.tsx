@@ -4,9 +4,11 @@ import { useAuth } from "../../utils/use-auth";
 import MarkdownEditor from "./MarkdownEditor";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { useRouter } from "next/router";
 
 export default function QuestionMakerEditor() {
   const auth = useAuth();
+  const router = useRouter();
   const db = firebase.firestore();
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
@@ -19,18 +21,21 @@ export default function QuestionMakerEditor() {
 
   const submitQuestion = () => {
     console.log(btoa(value));
-    db.collection("questions").add({
-      title: title,
-      tags: ["tag", "another tag", "another tag"],
-      userUid: auth.user.uid,
-      timestamp: new Date(),
-      markdown: btoa(value),
-      counters: {
-        votes: 0,
-        answers: 0,
-        views: 0,
-      },
-    });
+    db.collection("questions")
+      .add({
+        title: title,
+        tags: ["tag", "another tag", "another tag"],
+        userUid: auth.user.uid,
+        displayName: auth.user.displayName,
+        timestamp: new Date(),
+        markdown: btoa(value),
+        counters: {
+          votes: 0,
+          answers: 0,
+          views: 0,
+        },
+      })
+      .then(() => router.push("/"));
   };
 
   return (

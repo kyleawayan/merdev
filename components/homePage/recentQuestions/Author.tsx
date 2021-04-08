@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "../../../styles/homePage/recentQuestions/Author.module.css";
 import Moment from "react-moment";
-import userUidToDisplayName from "../../../utils/userUidToDisplayName";
 
 interface AuthorProps {
-  userUid: string;
+  displayName: string;
   timestamp: any;
 }
 
-export default function Author({ userUid, timestamp }: AuthorProps) {
-  const [displayName, setDisplayName] = useState("");
+export default function Author({ displayName, timestamp }: AuthorProps) {
   const date = timestamp.toDate();
-
-  useEffect(() => {
-    userUidToDisplayName(userUid)
-      .then((response) => {
-        setDisplayName(response.data.displayName);
-      })
-      .catch(console.error);
-  }, []);
 
   return (
     <div className={styles.authorContainer}>

@@ -6,12 +6,14 @@ interface QuestionCounters {
 
 interface Comment {
   userUid: string;
+  displayName: string;
   markdown: string;
   timestamp: any; // firestore date type, idk what it is exactly
 }
 
 interface Answer {
   userUid: string;
+  displayName: string;
   markdown: string;
   timestamp: any; // firestore date type, idk what it is exactly
   comments: Array<Comment>;
@@ -21,6 +23,7 @@ interface Question {
   title: string;
   tags: Array<string>;
   userUid: string;
+  displayName: string;
   timestamp: any; // firestore date type, idk what it is exactly
   markdown: string;
   counters: QuestionCounters;

@@ -14,7 +14,7 @@ export default function Question({ data }: QuestionProps) {
     <div className={styles.question}>
       <Counters counters={data.counters} />
       <Title title={data.title} tags={data.tags} />
-      <Author userUid={data.userUid} timestamp={data.timestamp} />
+      <Author displayName={data.displayName} timestamp={data.timestamp} />
     </div>
   );
 }
