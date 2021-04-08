@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useAuth } from "../utils/use-auth";
 import LoggedInHomePage from "../components/homePage/LoggedInHomePage";
+import HomePageDesign from "../components/homePage/HomePageDesign";
 
 export default function Home() {
   const auth = useAuth();
@@ -9,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <div className="globalContainer">
-        {!auth.user && <div>i am home page when not logged in</div>}
+        {!auth.user && <div><HomePageDesign></HomePageDesign></div>}
         {auth.user && (
           <div>
             <Link href="/ask">
