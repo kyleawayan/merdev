@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import Question from "./recentQuestions/Question";
 
 export default function RecentQuestions() {
   const db = firebase.firestore();
@@ -13,5 +14,11 @@ export default function RecentQuestions() {
     return () => unsubscribe();
   }, []);
 
-  return <div>test</div>;
+  return (
+    <div>
+      {data.map((question: Question) => (
+        <Question data={question} />
+      ))}
+    </div>
+  );
 }

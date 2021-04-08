@@ -1,0 +1,13 @@
+.counter {
+  font-size: 24px;
+}
+
+.label {
+  font-size: 12px;
+  margin-top: -5px;
+}
+
+.highlighted {
+  border: 2px var(--green) solid;
+  padding: 2px;
+}

@@ -1,0 +1,9 @@
+.counters {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.counters div {
+  margin-right: 19px;
+}
