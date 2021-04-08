@@ -1,0 +1,14 @@
+.authorContainer {
+  position: relative;
+  width: 53%;
+  text-align: right;
+  margin: 4px;
+  float: right;
+}
+
+.author {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 12px;
+}

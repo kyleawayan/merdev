@@ -1,0 +1,11 @@
+.tag {
+  background-color: var(--grey1);
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 400;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-right: 4px;
+}

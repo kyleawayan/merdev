@@ -7,7 +7,7 @@ export default function SearchBar() {
       <input
         type="text"
         name="search"
-        placeholder="i am non working search bar that still needs to be styled"
+        placeholder="i am non working search bar"
       />
     </div>
   );

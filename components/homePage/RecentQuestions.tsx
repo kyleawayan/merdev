@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import Question from "./recentQuestions/Question";
+import styles from "../../styles/homePage/RecentQuestions.module.css";
 
 export default function RecentQuestions() {
   const db = firebase.firestore();
@@ -15,10 +16,13 @@ export default function RecentQuestions() {
   }, []);
 
   return (
-    <div>
-      {data.map((question: Question) => (
-        <Question data={question} />
-      ))}
+    <div className={styles.recentQuestionsContainer}>
+      <div className={styles.recentQuestions}>
+        {data.map((question: Question) => (
+          <Question data={question} /> // add keys
+        ))}
+      </div>
+      <div className={styles.sidebar}>i am sidebar</div>
     </div>
   );
 }

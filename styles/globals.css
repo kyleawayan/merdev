@@ -38,7 +38,7 @@ body {
   --white: rgba(255, 255, 255, 0.9);
   --black: #37352f;
   --black-hover: #37352f86;
-  --grey1: #dddddd;
+  --grey1: #dddddd; /* for lines, borders, and tag boxes */
   --green: #53ba7d;
 }
 

@@ -5,7 +5,7 @@ export default function RulesAndStuff() {
     <div
       style={{
         marginLeft: "20px",
-        border: "1px lightgray solid",
+        border: "1px var(--grey1) solid",
         padding: "10px",
         width: "30%",
       }}
