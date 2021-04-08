@@ -13,6 +13,7 @@ export default function Title({ title, tags }: TitleProps) {
         fontSize: "18px",
         fontWeight: 600,
         margin: "6px",
+        width: "80%",
       }}
     >
       {title}
