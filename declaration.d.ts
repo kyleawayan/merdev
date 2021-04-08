@@ -24,8 +24,6 @@ interface Question {
   timestamp: Date;
   markdown: string;
   counters: QuestionCounters;
-  answers: Array<Answer>;
-  comments: Array<Comment>;
 }
 
 interface codeRendererProps {
