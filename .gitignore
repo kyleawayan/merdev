@@ -36,3 +36,4 @@ yarn-error.log*
 # firebase stuff
 .firebase/
 ui-debug.log*
+firestore-debug.log*
