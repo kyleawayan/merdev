@@ -1,0 +1,12 @@
+.singleComment {
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  border-bottom: 1px var(--grey1) solid;
+}
+
+.text {
+  margin-left: 10px;
+}

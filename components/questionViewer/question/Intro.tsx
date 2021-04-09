@@ -1,6 +1,6 @@
 import React from "react";
-import Tags from "../homePage/recentQuestions/Tags";
-import styles from "../../styles/questionViewer/Intro.module.css";
+import Tags from "../../homePage/recentQuestions/Tags";
+import styles from "../../../styles/questionViewer/question/Intro.module.css";
 
 interface TitleProps {
   title: string;

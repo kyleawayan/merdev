@@ -1,7 +1,7 @@
 import React from "react";
 import DownArrow from "./DownArrow";
 import UpArrow from "./UpArrow";
-import styles from "../../../styles/questionViewer/Upvoter.module.css";
+import styles from "../../../styles/questionViewer/upvoter/Upvoter.module.css";
 
 interface UpvoterProps {
   postId: string;

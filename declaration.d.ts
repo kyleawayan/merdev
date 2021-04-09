@@ -4,6 +4,10 @@ interface QuestionCounters {
   views: number;
 }
 
+interface CommentCounters {
+  votes: number;
+}
+
 interface Comment {
   userUid: string;
   displayName: string;
@@ -31,6 +35,15 @@ interface Question {
   timestamp: FirestoreDate;
   markdown: string;
   counters: QuestionCounters;
+  id: string;
+}
+
+interface QuestionComment {
+  userUid: string;
+  displayName: string;
+  markdown: string;
+  timestamp: FirestoreDate;
+  counters: CommentCounters;
   id: string;
 }
 

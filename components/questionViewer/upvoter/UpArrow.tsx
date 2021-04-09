@@ -2,13 +2,15 @@ import React from "react";
 
 interface UpArrowProps {
   onClick?: () => void;
+  width?: number;
+  height?: number;
 }
 
-export default function UpArrow({ onClick }: UpArrowProps) {
+export default function UpArrow({ onClick, width, height }: UpArrowProps) {
   return (
     <svg
-      width="24"
-      height="15"
+      width={width ? `${width}px` : "24"}
+      height={height ? `${height}px` : "15"}
       viewBox="0 0 24 15"
       xmlns="http://www.w3.org/2000/svg"
       onClick={onClick}
