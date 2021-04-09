@@ -34,7 +34,7 @@ body {
 }
 
 :root {
-  --merdev-max-width: 1200px;
+  --merdev-max-width: 1400px;
   --white: rgba(255, 255, 255, 0.9);
   --black: #37352f;
   --black-hover: #37352f86;
