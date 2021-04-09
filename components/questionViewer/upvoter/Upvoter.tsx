@@ -3,7 +3,11 @@ import DownArrow from "./DownArrow";
 import UpArrow from "./UpArrow";
 import styles from "../../../styles/questionViewer/Upvoter.module.css";
 
-export default function Upvoter() {
+interface UpvoterProps {
+  postId: string;
+}
+
+export default function Upvoter({ postId }: UpvoterProps) {
   return (
     <div className={styles.voter}>
       <div>

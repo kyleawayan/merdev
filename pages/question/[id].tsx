@@ -39,7 +39,7 @@ export default function QuestionViewer() {
         viewed={data.counters.views}
       />
       <div className={styles.text}>
-        <Upvoter />
+        <Upvoter postId={data.id} />
         <div className={styles.markdown}>
           <Text value={atob(data.markdown)} />
         </div>
