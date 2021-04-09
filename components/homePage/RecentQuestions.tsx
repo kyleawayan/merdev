@@ -9,17 +9,29 @@ export default function RecentQuestions() {
   const [data, setData] = useState<Array<Question>>([]);
 
   useEffect(() => {
-    const unsubscribe = db.collection("questions").onSnapshot((snapshot) => {
-      setData(snapshot.docs.map((doc) => doc.data()) as Array<Question>);
-    });
+    const unsubscribe = db
+      .collection("questions")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setData(
+          snapshot.docs.map((doc) => {
+            return {
+              ...doc.data(),
+              id: doc.id,
+            };
+          }) as Array<Question>
+        );
+      });
     return () => unsubscribe();
   }, []);
+
+  console.log(data);
 
   return (
     <div className={styles.recentQuestionsContainer}>
       <div className={styles.recentQuestions}>
         {data.map((question: Question) => (
-          <Question data={question} /> // add keys
+          <Question data={question} key={question.id} />
         ))}
       </div>
       <div className={styles.sidebar}>i am sidebar</div>

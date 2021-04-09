@@ -1,0 +1,15 @@
+.intro {
+  margin-bottom: 40px;
+}
+
+.intro h1 {
+  margin-bottom: 10px;
+}
+
+.info {
+  margin-top: 10px;
+}
+
+.secondary {
+  color: var(--grey2);
+}

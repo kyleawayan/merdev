@@ -1,12 +1,14 @@
+import Link from "next/link";
 import React from "react";
 import Tags from "./Tags";
 
 interface TitleProps {
   title: string;
   tags: Array<string>;
+  id: string;
 }
 
-export default function Title({ title, tags }: TitleProps) {
+export default function Title({ title, tags, id }: TitleProps) {
   return (
     <div
       style={{
@@ -16,7 +18,9 @@ export default function Title({ title, tags }: TitleProps) {
         width: "80%",
       }}
     >
-      {title}
+      <Link href={`/question/${id}`} prefetch={false}>
+        {title}
+      </Link>
       <Tags tags={tags} />
     </div>
   );
