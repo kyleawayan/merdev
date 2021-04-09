@@ -53,6 +53,7 @@
 .homepara {
   font-size: 17px;
   text-align: center;
+  color: white;
 }
 
 .homehr {
@@ -113,10 +114,8 @@
   height: 300px;
 }
 
-.aerial {
-  z-index: -1;
-}
-
 .background {
   z-index: -1;
+  opacity: 0.9;
 }
+

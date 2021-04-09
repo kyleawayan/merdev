@@ -14,13 +14,15 @@ export default function HomePageDesign() {
   }, []);
   return (
     <div>
+      <div className = "bg">
       <Image
-        src="/aerialucm.jpeg"
+        src="/se.jpeg"
         alt="me"
         layout="fill"
         objectFit="cover"
         className={styles.background}
       />
+      </div>
       <div className={styles.container}>
         <HomeLogo />
         <p className={styles.homepara}>
