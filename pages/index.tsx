@@ -3,10 +3,13 @@ import Link from "next/link";
 import { useAuth } from "../utils/use-auth";
 import LoggedInHomePage from "../components/homePage/LoggedInHomePage";
 import HomePageDesign from "../components/homePage/HomePageDesign";
+import Center from "../components/utils/CenterWholePage";
+// import styles from "../styles/homePage/imagebackground.module.css";
+// import Image from "next/Image";
+
 
 export default function Home() {
   const auth = useAuth();
-//test
   return (
     <div>
       <div className="globalContainer">

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function HomePageDesign() {
     useEffect(() => {
@@ -13,7 +14,7 @@ export default function HomePageDesign() {
     }, []);
     return (
         <div>
-
+            <Image src="/aerialucm.jpeg" alt="me" layout="fill" objectFit="cover" className = "aerial"></Image>
             <div className={styles.container}>
                 <HomeLogo />
                 <p className={styles.homepara}>One stop hub for all your coding troubles and needs. Exclusive to UC Merced computer science students  <br/> developed by UC Merced computer science students.</p>
@@ -61,7 +62,6 @@ export default function HomePageDesign() {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

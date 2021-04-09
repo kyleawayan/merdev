@@ -1,0 +1,8 @@
+.text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .Background {
+      z-index: 0;
+  }

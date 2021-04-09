@@ -112,4 +112,7 @@
     padding-left: 50px;
     height: 300px;
 }
-  
+
+.aerial{
+    z-index: -1;
+}
