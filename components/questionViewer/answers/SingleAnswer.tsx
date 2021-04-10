@@ -44,7 +44,12 @@ export default function SingleAnswer({ data, questionId }: AnswerProps) {
     <div>
       <div className={styles.question}>
         <div className={styles.text}>
-          <Upvoter postId={data.id} />
+          <Upvoter
+            questionId={questionId}
+            type="answer"
+            votes={data.counters.votes}
+            answerId={data.id}
+          />
           <div className={styles.markdown}>
             <Text value={atob(data.markdown)} />
           </div>

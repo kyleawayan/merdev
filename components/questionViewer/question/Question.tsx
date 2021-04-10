@@ -45,7 +45,11 @@ export default function Question({ data }: QuestionProps) {
         viewed={data.counters.views}
       />
       <div className={styles.text}>
-        <Upvoter postId={data.id} />
+        <Upvoter
+          questionId={data.id}
+          type="question"
+          votes={data.counters.votes}
+        />
         <div className={styles.markdown}>
           <Text value={atob(data.markdown)} />
         </div>
