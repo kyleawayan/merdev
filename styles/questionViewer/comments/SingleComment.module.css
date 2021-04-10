@@ -3,10 +3,16 @@
   align-items: center;
 }
 
+.upvoter {
+  width: 8%;
+}
+
 .line {
   border-bottom: 1px var(--grey1) solid;
 }
 
 .text {
   margin-left: 10px;
+  font-size: 14px;
+  width: 92%;
 }

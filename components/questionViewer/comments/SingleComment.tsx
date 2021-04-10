@@ -8,13 +8,14 @@ interface CommentProps {
 }
 
 export default function SingleComment({ data }: CommentProps) {
-  console.log(data);
   return (
     <div>
       <div className={styles.singleComment}>
-        <UpvoterComment />
+        <div className={styles.upvoter}>
+          <UpvoterComment />
+        </div>
         <div className={styles.text}>
-          <Text value={atob(data.markdown)} />
+          <Text value={atob(data.markdown) + ` – ${data.displayName}`} />
         </div>
       </div>
       <div className={styles.line} />

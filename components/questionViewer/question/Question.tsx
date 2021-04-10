@@ -52,7 +52,11 @@ export default function Question({ data }: QuestionProps) {
       </div>
       <div className={styles.indented}>
         <div className={styles.line} />
-        <Comments comments={comments} />
+        <Comments
+          comments={comments}
+          to="questionComment"
+          questionId={data.id}
+        />
       </div>
     </div>
   );

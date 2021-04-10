@@ -3,10 +3,12 @@ import AddComment from "./AddComment";
 import SingleComment from "./SingleComment";
 
 interface CommentsProps {
+  questionId: string;
+  to: "questionComment" | "answerComment";
   comments?: Array<QuestionComment>;
 }
 
-export default function Comments({ comments }: CommentsProps) {
+export default function Comments({ questionId, to, comments }: CommentsProps) {
   if (!comments) {
     return <div>add comment</div>;
   }
@@ -17,7 +19,7 @@ export default function Comments({ comments }: CommentsProps) {
           <SingleComment data={comment} />
         ))}
       </div>
-      <AddComment />
+      <AddComment id={questionId} to={to} />
     </div>
   );
 }

@@ -6,10 +6,11 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import { useRouter } from "next/router";
 
+const db = firebase.firestore();
+
 export default function QuestionMakerEditor() {
   const auth = useAuth();
   const router = useRouter();
-  const db = firebase.firestore();
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
 
