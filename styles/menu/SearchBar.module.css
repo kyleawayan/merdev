@@ -6,6 +6,7 @@
   width: 100%;
   top: 9px;
   left: 0;
+  z-index: -1;
 }
 
 .searchBarContainer input {

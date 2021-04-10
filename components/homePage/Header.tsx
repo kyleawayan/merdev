@@ -40,7 +40,7 @@ export default function HomePageHeader() {
             </motion.button>
           </Link>
           <p className={styles.homeparalogin}>
-            Already have an account? Log in <Link href="/login"><u>here!</u></Link>
+            Already have an account? Log in <Link href="/login">here!</Link>
           </p>
           <img
             data-aos="fade-up"

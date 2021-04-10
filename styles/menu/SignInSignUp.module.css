@@ -1,10 +1,21 @@
-.signInSignUp {
+.signIn {
+  position: absolute;
+  right: 62px;
+  top: -3px;
+  margin: 12px;
+}
+
+.signUp {
   position: absolute;
   right: 0px;
-  top: 0;
+  top: -3px;
   margin: 12px;
 }
 
 .signInSignUp button {
   height: 25px;
+}
+
+.btn {
+  height: 30px;
 }

@@ -12,7 +12,7 @@ export default function HomePageHelpSec() {
       <div className={styles.sectioncontainer}>
         <hr className={styles.homehr}></hr>
         <b>
-          <h1>Get general programming help</h1>
+          <h1>Get General Programming Help</h1>
         </b>
         <p className={styles.homeparainverted}>
           Since Merdev acts as a forum, it is not limited to only class topics

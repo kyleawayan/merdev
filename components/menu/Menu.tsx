@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import SignInSignUp from "./SignInSignUp";
 import { useAuth } from "../../utils/use-auth";
+import Link from "next/link";
 
 export default function Menu() {
   const auth = useAuth();
@@ -11,7 +12,9 @@ export default function Menu() {
   return (
     <div className={styles.menuContainerContainer}>
       <div className={styles.menu}>
-        <Logo />
+        <Link href="/">
+          <a><Logo /></a> 
+        </Link>
         <SearchBar />
         {!auth.user && <SignInSignUp />}
         {auth.user && (

@@ -9,10 +9,10 @@ import "firebase/functions";
 // Add your Firebase credentials
 if (!firebase.apps.length) {
   firebase.initializeApp({
-    apiKey: "AIzaSyAyKoCawOT6HyIb0EOWcfGomm2eWt1dSO4",
-    authDomain: "merdev-7b539.firebaseapp.com",
-    projectId: "merdev-7b539",
-    appId: "1:593369002159:web:a4b2bc1869eb6d0959645a",
+    apiKey: process.env.NEXT_PUBLIC_APIKEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECTID,
+    appId: process.env.NEXT_PUBLIC_APPID,
   });
 }
 
