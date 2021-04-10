@@ -22,7 +22,11 @@ export default function Comments({
     <div>
       <div>
         {comments.map((comment) => (
-          <SingleComment data={comment} key={comment.id} />
+          <SingleComment
+            data={comment}
+            questionId={questionId}
+            key={comment.id}
+          />
         ))}
       </div>
       <AddComment id={questionId} to={to} answerId={answerId} />

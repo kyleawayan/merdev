@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 import questionVote from "./question";
 import answerVote from "./answer";
+import questionCommentVote from "./questionComment";
 
 export const vote = functions.https.onCall((data, context) => {
   // 0: question
@@ -11,7 +12,7 @@ export const vote = functions.https.onCall((data, context) => {
     const userUid = context.auth.uid;
     const questionId: string = data.questionId;
     const answerId: string = data.answerId;
-    // const commentId: string = data.commentId;
+    const commentId: string = data.commentId;
     const action: number = data.action;
     const requestedState: number = data.setState;
     if (action != null && requestedState != null) {
@@ -21,6 +22,9 @@ export const vote = functions.https.onCall((data, context) => {
           break;
         case 1:
           answerVote(questionId, userUid, answerId, requestedState);
+          break;
+        case 2:
+          questionCommentVote(questionId, userUid, requestedState, commentId);
           break;
       }
     } else {

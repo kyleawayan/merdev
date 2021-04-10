@@ -16,10 +16,10 @@ async function changeVoteCounter(
   add: number,
   answerId: string
 ): Promise<FirebaseFirestore.WriteResult> {
-  const postDocData = (
+  const answersDocData = (
     await questionDoc.collection("answers").doc(answerId).get()
   ).data() as Question;
-  const currentVoteCount = postDocData.counters.votes ?? 0;
+  const currentVoteCount = answersDocData.counters.votes ?? 0;
   console.log(currentVoteCount, add);
   return questionDoc
     .collection("answers")
@@ -55,7 +55,7 @@ async function changeVote(
       });
     changeVoteCounter(questionDoc, state == 1 ? 1 : -1, answerId);
   } else {
-    questionDoc
+    await questionDoc
       .collection("answers")
       .doc(answerId)
       .collection("votes")

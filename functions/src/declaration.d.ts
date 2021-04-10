@@ -8,6 +8,10 @@ interface QuestionCounters {
   views: number;
 }
 
+interface CommentOrAnswerCounters {
+  votes: number;
+}
+
 interface Question {
   title: string;
   tags: Array<string>;
@@ -25,4 +29,13 @@ interface Answer {
   markdown: string;
   timestamp: Date; // idk if it's actually a date type in firestore admin
   comments: Array<Comment>;
+}
+
+interface QuestionOrAnswerComment {
+  userUid: string;
+  displayName: string;
+  markdown: string;
+  timestamp: Date; // idk if it's actually a date type in firestore admin
+  counters: CommentOrAnswerCounters;
+  id: string;
 }
