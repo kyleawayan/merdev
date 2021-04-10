@@ -10,6 +10,7 @@ const vote = firebase.functions().httpsCallable("votes");
 interface UpvoterProps {
   questionId: string;
   commentId: string;
+  answerId?: string;
   votes: number;
   on: "question" | "answer";
 }
@@ -17,6 +18,7 @@ interface UpvoterProps {
 export default function UpvoterComment({
   questionId,
   commentId,
+  answerId,
   votes,
   on,
 }: UpvoterProps) {
@@ -24,6 +26,7 @@ export default function UpvoterComment({
     vote({
       questionId: questionId,
       commentId: commentId,
+      answerId: answerId,
       action: on == "question" ? 2 : 3,
       setState: 1,
     });
@@ -33,6 +36,7 @@ export default function UpvoterComment({
     vote({
       questionId: questionId,
       commentId: commentId,
+      answerId: answerId,
       action: on == "question" ? 2 : 3,
       setState: -1,
     });

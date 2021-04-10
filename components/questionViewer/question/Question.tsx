@@ -58,7 +58,8 @@ export default function Question({ data }: QuestionProps) {
         <div className={styles.line} />
         <Comments
           comments={comments}
-          to="questionComment"
+          addCommentTo="questionComment"
+          addCommentUpvotesTo="question"
           questionId={data.id}
         />
       </div>

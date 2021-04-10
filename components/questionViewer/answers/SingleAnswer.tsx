@@ -58,7 +58,8 @@ export default function SingleAnswer({ data, questionId }: AnswerProps) {
           <div className={styles.line} />
           <Comments
             comments={comments}
-            to="answerComment"
+            addCommentTo="answerComment"
+            addCommentUpvotesTo="answer"
             questionId={questionId}
             answerId={data.id}
           />

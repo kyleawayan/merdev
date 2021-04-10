@@ -2,6 +2,7 @@ import * as functions from "firebase-functions";
 import questionVote from "./question";
 import answerVote from "./answer";
 import questionCommentVote from "./questionComment";
+import answerCommentVote from "./answerComment";
 
 export const vote = functions.https.onCall((data, context) => {
   // 0: question
@@ -25,6 +26,15 @@ export const vote = functions.https.onCall((data, context) => {
           break;
         case 2:
           questionCommentVote(questionId, userUid, requestedState, commentId);
+          break;
+        case 3:
+          answerCommentVote(
+            questionId,
+            userUid,
+            answerId,
+            commentId,
+            requestedState
+          );
           break;
       }
     } else {

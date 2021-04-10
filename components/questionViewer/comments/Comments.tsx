@@ -4,14 +4,16 @@ import SingleComment from "./SingleComment";
 
 interface CommentsProps {
   questionId: string;
-  to: "questionComment" | "answerComment";
+  addCommentTo: "questionComment" | "answerComment";
+  addCommentUpvotesTo: "question" | "answer";
   comments?: Array<QuestionOrAnswerComment>;
   answerId?: string;
 }
 
 export default function Comments({
   questionId,
-  to,
+  addCommentTo,
+  addCommentUpvotesTo,
   comments,
   answerId,
 }: CommentsProps) {
@@ -25,11 +27,13 @@ export default function Comments({
           <SingleComment
             data={comment}
             questionId={questionId}
+            answerId={answerId}
+            on={addCommentUpvotesTo}
             key={comment.id}
           />
         ))}
       </div>
-      <AddComment id={questionId} to={to} answerId={answerId} />
+      <AddComment id={questionId} to={addCommentTo} answerId={answerId} />
     </div>
   );
 }
