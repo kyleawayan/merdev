@@ -14,7 +14,7 @@ interface QuestionProps {
 }
 
 export default function Question({ data }: QuestionProps) {
-  const [comments, setComments] = useState<Array<QuestionComment>>();
+  const [comments, setComments] = useState<Array<QuestionOrAnswerComment>>();
 
   useEffect(() => {
     // get question comments
@@ -30,7 +30,7 @@ export default function Question({ data }: QuestionProps) {
               ...doc.data(),
               id: doc.id,
             };
-          }) as Array<QuestionComment>
+          }) as Array<QuestionOrAnswerComment>
         );
       });
     return () => unsubscribe();

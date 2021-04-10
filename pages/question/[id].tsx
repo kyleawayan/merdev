@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import Question from "../../components/questionViewer/question/Question";
+import Answers from "../../components/questionViewer/answers/Answers";
 
 const db = firebase.firestore();
 
@@ -33,6 +34,7 @@ export default function QuestionViewer() {
   return (
     <div className="globalContainer">
       <Question data={data} />
+      <Answers questionId={data.id} />
     </div>
   );
 }

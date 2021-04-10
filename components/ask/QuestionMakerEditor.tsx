@@ -21,7 +21,6 @@ export default function QuestionMakerEditor() {
   };
 
   const submitQuestion = () => {
-    console.log(btoa(value));
     db.collection("questions")
       .add({
         title: title,

@@ -4,7 +4,7 @@ import styles from "../../../styles/questionViewer/comments/SingleComment.module
 import Text from "../Text";
 
 interface CommentProps {
-  data: QuestionComment;
+  data: QuestionOrAnswerComment;
 }
 
 export default function SingleComment({ data }: CommentProps) {

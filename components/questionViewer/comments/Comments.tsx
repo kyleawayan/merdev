@@ -5,10 +5,16 @@ import SingleComment from "./SingleComment";
 interface CommentsProps {
   questionId: string;
   to: "questionComment" | "answerComment";
-  comments?: Array<QuestionComment>;
+  comments?: Array<QuestionOrAnswerComment>;
+  answerId?: string;
 }
 
-export default function Comments({ questionId, to, comments }: CommentsProps) {
+export default function Comments({
+  questionId,
+  to,
+  comments,
+  answerId,
+}: CommentsProps) {
   if (!comments) {
     return <div>add comment</div>;
   }
@@ -16,10 +22,10 @@ export default function Comments({ questionId, to, comments }: CommentsProps) {
     <div>
       <div>
         {comments.map((comment) => (
-          <SingleComment data={comment} />
+          <SingleComment data={comment} key={comment.id} />
         ))}
       </div>
-      <AddComment id={questionId} to={to} />
+      <AddComment id={questionId} to={to} answerId={answerId} />
     </div>
   );
 }

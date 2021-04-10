@@ -1,0 +1,28 @@
+.question {
+  max-width: 800px;
+}
+
+.text {
+  display: flex;
+}
+
+.markdown {
+  margin-top: -1em;
+  margin-left: 20px;
+  max-width: 800px;
+}
+
+.indented {
+  margin-left: 45px;
+}
+
+.line {
+  border-bottom: 1px var(--grey1) solid;
+}
+
+.bottomLine {
+  margin-top: 52px;
+  margin-bottom: 52px;
+  border-bottom: 1px var(--grey2) solid;
+  max-width: 800px;
+}
