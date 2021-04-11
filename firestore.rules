@@ -1,6 +1,13 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /questions/{questionId}/answers/{answerId} {
+      allow update: if (request.resource.data.marked == true || request.resource.data.marked == false)
+                    && request.resource.data.counters.votes == resource.data.counters.votes
+                    && request.resource.data.displayName == resource.data.displayName
+                    && request.resource.data.markdown == resource.data.markdown
+                    && request.resource.data.userUid == resource.data.userUid
+    }
     match /questions/{questionId}/{document=**} {
       allow read;
       allow create: if request.auth != null;
