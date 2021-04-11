@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../../../utils/use-auth";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import Checkmark from "./Checkmark";
 
 const db = firebase.firestore();
 
@@ -41,12 +42,9 @@ export default function Solved({
 
   return (
     <div>
-      {questionUserUid == auth.user.uid && (
-        <div
-          onClick={markSolved}
-          style={{ color: marked ? "green" : "inherit" }}
-        >
-          a
+      {(questionUserUid == auth.user.uid || marked) && (
+        <div onClick={markSolved} style={{ marginTop: "10px" }}>
+          <Checkmark width={25} filled={marked} />
         </div>
       )}
     </div>
