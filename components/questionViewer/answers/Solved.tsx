@@ -33,10 +33,12 @@ export default function Solved({
   const auth = useAuth();
 
   const markSolved = () => {
-    if (!marked) {
-      markAnswer(questionId, answerId, true);
-    } else {
-      markAnswer(questionId, answerId, false);
+    if (questionUserUid == auth.user.uid) {
+      if (!marked) {
+        markAnswer(questionId, answerId, true);
+      } else {
+        markAnswer(questionId, answerId, false);
+      }
     }
   };
 
