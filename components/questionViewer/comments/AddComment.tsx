@@ -26,7 +26,10 @@ export default function AddComment({ id, to, answerId }: AddCommentProps) {
           votes: 0,
         },
       })
-      .then(() => setEditorOpen(false));
+      .then(() => {
+        setEditorOpen(false);
+        setValue("");
+      });
   };
 
   return (

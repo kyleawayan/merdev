@@ -35,8 +35,8 @@ export default function AnswerEditor({ value, onChange }: AnswerEditorProps) {
       <ReactMde
         value={value}
         onChange={onChange}
-        minEditorHeight={378}
-        maxEditorHeight={378}
+        minEditorHeight={150}
+        maxEditorHeight={150}
         selectedTab={"write"}
         onTabChange={() => console.log()}
       />

@@ -14,8 +14,8 @@ export default function CommentEditor({
     <ReactMde
       value={value}
       onChange={onChange}
-      minEditorHeight={378}
-      maxEditorHeight={378}
+      minEditorHeight={100}
+      maxEditorHeight={100}
       selectedTab={"write"}
       onTabChange={() => console.log()}
     />

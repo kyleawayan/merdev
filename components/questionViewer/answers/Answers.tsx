@@ -64,7 +64,7 @@ export default function Answers({ questionId }: AnswersProps) {
           <SingleAnswer data={answer} questionId={questionId} />
         ))}
       </div>
-      <AddAnswer questionId={questionId} />
+      {hasAnswers && <AddAnswer questionId={questionId} />}
     </div>
   );
 }
