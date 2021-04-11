@@ -5,15 +5,23 @@ import Text from "../Text";
 import Comments from "../comments/Comments";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { useAuth } from "../../../utils/use-auth";
+import Solved from "./Solved";
 
 const db = firebase.firestore();
 
 interface AnswerProps {
   data: Answer;
   questionId: string;
+  questionUserUid: string;
 }
 
-export default function SingleAnswer({ data, questionId }: AnswerProps) {
+export default function SingleAnswer({
+  data,
+  questionId,
+  questionUserUid,
+}: AnswerProps) {
+  const auth = useAuth();
   const [comments, setComments] = useState<Array<QuestionOrAnswerComment>>();
 
   useEffect(() => {
@@ -44,12 +52,20 @@ export default function SingleAnswer({ data, questionId }: AnswerProps) {
     <div>
       <div className={styles.question}>
         <div className={styles.text}>
-          <Upvoter
-            questionId={questionId}
-            type="answer"
-            votes={data.counters.votes}
-            answerId={data.id}
-          />
+          <div>
+            <Upvoter
+              questionId={questionId}
+              type="answer"
+              votes={data.counters.votes}
+              answerId={data.id}
+            />
+            <Solved
+              questionUserUid={questionUserUid}
+              questionId={questionId}
+              answerId={data.id}
+              marked={data.marked}
+            />
+          </div>
           <div className={styles.markdown}>
             <Text value={atob(data.markdown)} />
           </div>

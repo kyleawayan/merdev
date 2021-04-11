@@ -9,9 +9,10 @@ const db = firebase.firestore();
 
 interface AnswersProps {
   questionId: string;
+  questionUserUid: string;
 }
 
-export default function Answers({ questionId }: AnswersProps) {
+export default function Answers({ questionId, questionUserUid }: AnswersProps) {
   const [data, setData] = useState<Array<Answer>>();
   const [hasAnswers, setHasAnswers] = useState(false);
   // make seperate boolean for no answers, so if someone is typing their answer
@@ -61,7 +62,12 @@ export default function Answers({ questionId }: AnswersProps) {
       )}
       <div>
         {data.map((answer) => (
-          <SingleAnswer data={answer} questionId={questionId} key={answer.id} />
+          <SingleAnswer
+            data={answer}
+            questionId={questionId}
+            questionUserUid={questionUserUid}
+            key={answer.id}
+          />
         ))}
       </div>
       {hasAnswers && <AddAnswer questionId={questionId} />}

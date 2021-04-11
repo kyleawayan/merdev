@@ -21,6 +21,7 @@ interface Question {
   markdown: string;
   counters: QuestionCounters;
   id: string;
+  solved: boolean;
 }
 
 interface Answer {
@@ -29,6 +30,7 @@ interface Answer {
   markdown: string;
   timestamp: Date; // idk if it's actually a date type in firestore admin
   comments: Array<Comment>;
+  marked: boolean;
 }
 
 interface QuestionOrAnswerComment {
