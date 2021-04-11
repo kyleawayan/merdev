@@ -8,6 +8,15 @@ import { useAuth } from "../../../utils/use-auth";
 
 const vote = firebase.functions().httpsCallable("votes");
 
+function unvote(questionId: string, action: number, answerId?: string) {
+  return vote({
+    questionId: questionId,
+    answerId: answerId,
+    action: action,
+    setState: 0,
+  });
+}
+
 interface UpvoterProps {
   questionId: string;
   answerId?: string;
@@ -26,25 +35,37 @@ export default function Upvoter({
   const [voteState, setVoteState] = useState(0);
 
   const upvote = () => {
-    setOffset(1);
-    setVoteState(1);
-    vote({
-      questionId: questionId,
-      answerId: answerId,
-      action: type == "question" ? 0 : 1,
-      setState: 1,
-    });
+    if (voteState != 1) {
+      setOffset(1);
+      setVoteState(1);
+      vote({
+        questionId: questionId,
+        answerId: answerId,
+        action: type == "question" ? 0 : 1,
+        setState: 1,
+      });
+    } else {
+      setOffset(-1);
+      setVoteState(0);
+      unvote(questionId, type == "question" ? 0 : 1, answerId);
+    }
   };
 
   const downvote = () => {
-    setOffset(-1);
-    setVoteState(-1);
-    vote({
-      questionId: questionId,
-      answerId: answerId,
-      action: type == "question" ? 0 : 1,
-      setState: -1,
-    });
+    if (voteState != -1) {
+      setOffset(-1);
+      setVoteState(-1);
+      vote({
+        questionId: questionId,
+        answerId: answerId,
+        action: type == "question" ? 0 : 1,
+        setState: -1,
+      });
+    } else {
+      setOffset(1);
+      setVoteState(0);
+      unvote(questionId, type == "question" ? 0 : 1, answerId);
+    }
   };
 
   useEffect(() => {

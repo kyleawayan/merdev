@@ -46,6 +46,7 @@ async function changeVoteCounter(
  * @param {string} userUid The user's UID.
  * @param {string} answerId The answer's ID.
  * @param {string} commentId The answer's comment ID.
+ * @param {number?} currentState The original state before modification, so if something requests a state of 0, we can add or subtract the votes accordingly.
  * @return {Promise<void>} Returns a void promise.
  */
 async function changeVote(
@@ -53,7 +54,8 @@ async function changeVote(
   questionDoc: FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>,
   userUid: string,
   answerId: string,
-  commentId: string
+  commentId: string,
+  currentState?: number
 ): Promise<void> {
   if (state != 0) {
     await questionDoc
@@ -76,7 +78,11 @@ async function changeVote(
       .collection("votes")
       .doc(userUid)
       .delete();
-    changeVoteCounter(questionDoc, -1, answerId, commentId);
+    if (currentState == 1) {
+      changeVoteCounter(questionDoc, -1, answerId, commentId);
+    } else if (currentState == -1) {
+      changeVoteCounter(questionDoc, 1, answerId, commentId);
+    }
   }
 }
 
@@ -109,7 +115,14 @@ export default async function answerCommentVote(
   return new Promise<void>((resolve) => {
     // no vote or want to change vote
     if (documentData?.state != requestedState) {
-      changeVote(requestedState, questionDoc, userUid, answerId, commentId)
+      changeVote(
+        requestedState,
+        questionDoc,
+        userUid,
+        answerId,
+        commentId,
+        documentData?.state
+      )
         .then(() => {
           resolve();
         })

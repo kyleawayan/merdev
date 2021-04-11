@@ -16,7 +16,6 @@ async function changeVoteCounter(
 ): Promise<FirebaseFirestore.WriteResult> {
   const questionDocData = (await questionDoc.get()).data() as Question;
   const currentVoteCount = questionDocData.counters.votes ?? 0;
-  console.log(currentVoteCount, add);
   return questionDoc.update({
     "counters.votes": currentVoteCount + add ?? 0,
   });
@@ -28,12 +27,14 @@ async function changeVoteCounter(
  * @param {number} state Set vote state.
  * @param {FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>} questionDoc The postDoc reference.
  * @param {string} userUid The user's UID.
+ * @param {number?} currentState The original state before modification, so if something requests a state of 0, we can add or subtract the votes accordingly.
  * @return {Promise<void>} Returns a void promise.
  */
 async function changeVote(
   state: number,
   questionDoc: FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>,
-  userUid: string
+  userUid: string,
+  currentState?: number
 ): Promise<void> {
   if (state != 0) {
     await questionDoc.collection("votes").doc(userUid).set({
@@ -42,7 +43,11 @@ async function changeVote(
     changeVoteCounter(questionDoc, state == 1 ? 1 : -1);
   } else {
     await questionDoc.collection("votes").doc(userUid).delete();
-    changeVoteCounter(questionDoc, -1);
+    if (currentState == 1) {
+      changeVoteCounter(questionDoc, -1);
+    } else if (currentState == -1) {
+      changeVoteCounter(questionDoc, 1);
+    }
   }
 }
 
@@ -64,7 +69,7 @@ export default async function questionVote(
   return new Promise<void>((resolve) => {
     // no vote or want to change vote
     if (documentData?.state != requestedState) {
-      changeVote(requestedState, questionDoc, userUid)
+      changeVote(requestedState, questionDoc, userUid, documentData?.state)
         .then(() => {
           resolve();
         })

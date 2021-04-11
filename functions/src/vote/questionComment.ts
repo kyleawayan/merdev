@@ -15,8 +15,7 @@ const db = admin.firestore();
 async function changeVoteCounter(
   questionDoc: FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>,
   add: number,
-  commentId: string,
-  userUid: string
+  commentId: string
 ): Promise<FirebaseFirestore.WriteResult> {
   const questionCommentDocData = (
     await questionDoc.collection("questionComments").doc(commentId).get()
@@ -38,13 +37,15 @@ async function changeVoteCounter(
  * @param {FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>} questionDoc The postDoc reference.
  * @param {string} userUid The user's UID.
  * @param {string} commentId The user's UID.
+ * @param {number?} currentState The original state before modification, so if something requests a state of 0, we can add or subtract the votes accordingly.
  * @return {Promise<void>} Returns a void promise.
  */
 async function changeVote(
   state: number,
   questionDoc: FirebaseFirestore.DocumentReference<FirebaseFirestore.DocumentData>,
   userUid: string,
-  commentId: string
+  commentId: string,
+  currentState?: number
 ): Promise<void> {
   if (state != 0) {
     await questionDoc
@@ -55,7 +56,7 @@ async function changeVote(
       .set({
         state: state,
       });
-    changeVoteCounter(questionDoc, state == 1 ? 1 : -1, commentId, userUid);
+    changeVoteCounter(questionDoc, state == 1 ? 1 : -1, commentId);
   } else {
     await questionDoc
       .collection("questionComments")
@@ -63,7 +64,11 @@ async function changeVote(
       .collection("votes")
       .doc(userUid)
       .delete();
-    changeVoteCounter(questionDoc, -1, commentId, userUid);
+    if (currentState == 1) {
+      changeVoteCounter(questionDoc, -1, commentId);
+    } else if (currentState == -1) {
+      changeVoteCounter(questionDoc, 1, commentId);
+    }
   }
 }
 
@@ -93,7 +98,13 @@ export default async function questionCommentVote(
   return new Promise<void>((resolve) => {
     // no vote or want to change vote
     if (documentData?.state != requestedState) {
-      changeVote(requestedState, questionDoc, userUid, commentId)
+      changeVote(
+        requestedState,
+        questionDoc,
+        userUid,
+        commentId,
+        documentData?.state
+      )
         .then(() => {
           resolve();
         })

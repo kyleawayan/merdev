@@ -6,13 +6,26 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import {
   checkAnswerCommentVote,
-  checkAnswerVote,
   checkQuestionCommentVote,
-  checkQuestionVote,
 } from "../../../utils/checkVote";
 import { useAuth } from "../../../utils/use-auth";
 
 const vote = firebase.functions().httpsCallable("votes");
+
+function unvote(
+  questionId: string,
+  action: number,
+  commentId: string,
+  answerId?: string
+) {
+  return vote({
+    questionId: questionId,
+    commentId: commentId,
+    answerId: answerId,
+    action: action,
+    setState: 0,
+  });
+}
 
 interface UpvoterProps {
   questionId: string;
@@ -34,27 +47,39 @@ export default function UpvoterComment({
   const [voteState, setVoteState] = useState(0);
 
   const upvote = () => {
-    setOffset(1);
-    setVoteState(1);
-    vote({
-      questionId: questionId,
-      commentId: commentId,
-      answerId: answerId,
-      action: on == "question" ? 2 : 3,
-      setState: 1,
-    });
+    if (voteState != 1) {
+      setOffset(1);
+      setVoteState(1);
+      vote({
+        questionId: questionId,
+        commentId: commentId,
+        answerId: answerId,
+        action: on == "question" ? 2 : 3,
+        setState: 1,
+      });
+    } else {
+      setOffset(-1);
+      setVoteState(0);
+      unvote(questionId, on == "question" ? 2 : 3, commentId, answerId);
+    }
   };
 
   const downvote = () => {
-    setOffset(-1);
-    setVoteState(-1);
-    vote({
-      questionId: questionId,
-      commentId: commentId,
-      answerId: answerId,
-      action: on == "question" ? 2 : 3,
-      setState: -1,
-    });
+    if (voteState != -1) {
+      setOffset(-1);
+      setVoteState(-1);
+      vote({
+        questionId: questionId,
+        commentId: commentId,
+        answerId: answerId,
+        action: on == "question" ? 2 : 3,
+        setState: -1,
+      });
+    } else {
+      setOffset(1);
+      setVoteState(0);
+      unvote(questionId, on == "question" ? 2 : 3, commentId, answerId);
+    }
   };
 
   useEffect(() => {
