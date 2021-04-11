@@ -41,7 +41,7 @@ export default function Answers({ questionId }: AnswersProps) {
   }, []);
 
   if (!data) {
-    return <div>error getting answers</div>;
+    return <div></div>;
   }
 
   return (

@@ -5,5 +5,7 @@ import * as functions from "firebase-functions";
 admin.initializeApp(functions.config().firebase);
 
 import { vote } from "./vote/vote";
+import { updateAnswerCounter } from "./answerCounter";
 
 exports.votes = vote;
+exports.updateAnswerCounter = updateAnswerCounter;

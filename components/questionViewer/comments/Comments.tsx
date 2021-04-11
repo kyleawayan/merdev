@@ -18,7 +18,7 @@ export default function Comments({
   answerId,
 }: CommentsProps) {
   if (!comments) {
-    return <div>add comment</div>;
+    return <div></div>;
   }
   return (
     <div>
