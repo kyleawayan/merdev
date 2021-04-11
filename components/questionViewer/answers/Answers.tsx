@@ -61,7 +61,7 @@ export default function Answers({ questionId }: AnswersProps) {
       )}
       <div>
         {data.map((answer) => (
-          <SingleAnswer data={answer} questionId={questionId} />
+          <SingleAnswer data={answer} questionId={questionId} key={answer.id} />
         ))}
       </div>
       {hasAnswers && <AddAnswer questionId={questionId} />}
