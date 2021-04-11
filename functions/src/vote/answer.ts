@@ -20,7 +20,6 @@ async function changeVoteCounter(
     await questionDoc.collection("answers").doc(answerId).get()
   ).data() as Question;
   const currentVoteCount = answersDocData.counters.votes ?? 0;
-  console.log(currentVoteCount, add);
   return questionDoc
     .collection("answers")
     .doc(answerId)

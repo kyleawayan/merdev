@@ -25,8 +25,6 @@ export default function RecentQuestions() {
     return () => unsubscribe();
   }, []);
 
-  console.log(data);
-
   return (
     <div className={styles.recentQuestionsContainer}>
       <div className={styles.recentQuestions}>

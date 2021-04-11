@@ -46,8 +46,6 @@ export default function SingleAnswer({
     return () => unsubscribe();
   }, []);
 
-  console.log(comments);
-
   return (
     <div>
       <div className={styles.question}>

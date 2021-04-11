@@ -21,7 +21,6 @@ async function changeVoteCounter(
     await questionDoc.collection("questionComments").doc(commentId).get()
   ).data() as QuestionOrAnswerComment;
   const currentVoteCount = questionCommentDocData.counters.votes ?? 0;
-  console.log(currentVoteCount, add);
   return questionDoc
     .collection("questionComments")
     .doc(commentId)
@@ -86,7 +85,6 @@ export default async function questionCommentVote(
   requestedState: number,
   commentId: string
 ): Promise<void> {
-  console.log(questionId, userUid, requestedState, commentId);
   const questionDoc = db.collection("questions").doc(questionId);
   const userDoc = await questionDoc
     .collection("questionComments")
