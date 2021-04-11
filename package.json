@@ -6,6 +6,7 @@
     "firedev": "cross-env FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8081 NEXT_PUBLIC_FIREDEV=true next dev",
     "dev": "cross-env NEXT_PUBLIC_FIREDEV=false && next dev",
     "build": "cross-env NEXT_PUBLIC_FIREDEV=false && next build",
+    "vercelbuild": "cross-env NEXT_PUBLIC_FIREDEV=false && rm -rf functions && next build",
     "start": "cross-env NEXT_PUBLIC_FIREDEV=false && next start"
   },
   "dependencies": {
