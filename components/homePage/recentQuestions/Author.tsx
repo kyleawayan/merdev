@@ -4,7 +4,7 @@ import Moment from "react-moment";
 
 interface AuthorProps {
   displayName: string;
-  timestamp: any;
+  timestamp: FirestoreDate;
 }
 
 export default function Author({ displayName, timestamp }: AuthorProps) {

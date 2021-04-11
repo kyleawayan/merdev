@@ -4,12 +4,12 @@
 }
 
 .recentQuestions {
-  width: 70%;
+  width: 80%;
 }
 
 .sidebar {
   margin-left: 20px;
   border: 1px var(--grey1) solid;
   padding: 10px;
-  width: 30%;
+  width: 20%;
 }

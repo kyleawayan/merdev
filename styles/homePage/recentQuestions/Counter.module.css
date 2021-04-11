@@ -9,5 +9,5 @@
 
 .highlighted {
   border: 2px var(--green) solid;
-  padding: 2px;
+  padding: 4px;
 }

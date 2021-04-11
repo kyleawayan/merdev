@@ -1,0 +1,9 @@
+.voter {
+  width: 25px;
+}
+
+.voteNumber {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 4px;
+}

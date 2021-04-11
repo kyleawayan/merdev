@@ -4,19 +4,28 @@ interface QuestionCounters {
   views: number;
 }
 
+interface CommentOrAnswerCounters {
+  votes: number;
+}
+
 interface Comment {
   userUid: string;
   displayName: string;
   markdown: string;
-  timestamp: any; // firestore date type, idk what it is exactly
+  timestamp: FirestoreDate;
 }
 
 interface Answer {
   userUid: string;
   displayName: string;
   markdown: string;
-  timestamp: any; // firestore date type, idk what it is exactly
+  timestamp: FirestoreDate;
   comments: Array<Comment>;
+  marked: boolean;
+}
+
+interface FirestoreDate {
+  toDate(): Date;
 }
 
 interface Question {
@@ -24,9 +33,29 @@ interface Question {
   tags: Array<string>;
   userUid: string;
   displayName: string;
-  timestamp: any; // firestore date type, idk what it is exactly
+  timestamp: FirestoreDate;
   markdown: string;
   counters: QuestionCounters;
+  id: string;
+  solved: boolean;
+}
+
+interface QuestionOrAnswerComment {
+  userUid: string;
+  displayName: string;
+  markdown: string;
+  timestamp: FirestoreDate;
+  counters: CommentOrAnswerCounters;
+  id: string;
+}
+
+interface Answer {
+  id: string;
+  userUid: string;
+  displayName: string;
+  markdown: string;
+  timestamp: FirestoreDate;
+  counters: CommentOrAnswerCounters;
 }
 
 interface codeRendererProps {

@@ -10,10 +10,14 @@ export default function Home() {
   return (
     <div>
       <div className="globalContainer">
-        {!auth.user && <div><HomePageDesign></HomePageDesign></div>}
+        {!auth.user && (
+          <div>
+            <HomePageDesign />
+          </div>
+        )}
         {auth.user && (
           <div>
-            <Link href="/ask">
+            <Link href="/ask" prefetch={false}>
               <button>ask question</button>
             </Link>
             <LoggedInHomePage />

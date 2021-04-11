@@ -9,11 +9,10 @@ interface QuestionProps {
 }
 
 export default function Question({ data }: QuestionProps) {
-  console.log(data.timestamp.t);
   return (
     <div className={styles.question}>
-      <Counters counters={data.counters} />
-      <Title title={data.title} tags={data.tags} />
+      <Counters counters={data.counters} answersHighlighted={data.solved} />
+      <Title title={data.title} tags={data.tags} id={data.id} />
       <Author displayName={data.displayName} timestamp={data.timestamp} />
     </div>
   );

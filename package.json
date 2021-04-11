@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "firedev": "export FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 && export FIRESTORE_EMULATOR_HOST=localhost:8081 && export NEXT_PUBLIC_FIREDEV=true && next dev",
-    "dev": "NEXT_PUBLIC_FIREDEV=false && next dev",
-    "build": "NEXT_PUBLIC_FIREDEV=false && next build",
-    "start": "NEXT_PUBLIC_FIREDEV=false && next start"
+    "firedev": "cross-env FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8081 NEXT_PUBLIC_FIREDEV=true next dev",
+    "dev": "cross-env NEXT_PUBLIC_FIREDEV=false && next dev",
+    "build": "cross-env NEXT_PUBLIC_FIREDEV=false && next build",
+    "vercelbuild": "cross-env NEXT_PUBLIC_FIREDEV=false && rm -rf functions && next build",
+    "start": "cross-env NEXT_PUBLIC_FIREDEV=false && next start"
   },
   "dependencies": {
     "aos": "^2.3.4",
@@ -31,6 +32,7 @@
     "@types/aos": "^3.0.3",
     "@types/react": "^17.0.3",
     "@types/react-syntax-highlighter": "^13.5.0",
+    "cross-env": "^7.0.3",
     "cypress": "^7.0.1",
     "typescript": "^4.2.3"
   }
