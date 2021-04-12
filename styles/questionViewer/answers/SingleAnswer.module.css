@@ -26,3 +26,10 @@
   border-bottom: 1px var(--grey2) solid;
   max-width: 800px;
 }
+
+@media only screen and (max-width: 780px) {
+  .markdown {
+    width: calc(100% - 40px);
+    max-width: 414px;
+  }
+}
