@@ -17,9 +17,6 @@ export default function Home() {
         )}
         {auth.user && (
           <div>
-            <Link href="/ask" prefetch={false}>
-              <button>ask question</button>
-            </Link>
             <LoggedInHomePage />
           </div>
         )}
