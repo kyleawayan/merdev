@@ -12,7 +12,9 @@ export default function Question({ data }: QuestionProps) {
   return (
     <div className={styles.question}>
       <Counters counters={data.counters} answersHighlighted={data.solved} />
-      <Title title={data.title} tags={data.tags} id={data.id} />
+      <div className={styles.title}>
+        <Title title={data.title} tags={data.tags} id={data.id} />
+      </div>
       <Author displayName={data.displayName} timestamp={data.timestamp} />
     </div>
   );

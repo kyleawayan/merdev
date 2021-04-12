@@ -8,6 +8,6 @@
 }
 
 .highlighted {
-  border: 2px var(--green) solid;
-  padding: 4px;
+  outline: 2px var(--green) solid;
+  outline-offset: 5px;
 }

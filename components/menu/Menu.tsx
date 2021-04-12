@@ -20,7 +20,6 @@ export default function Menu() {
   };
 
   useEffect(() => {
-    // to do: check if framer motion has a resize listener already?
     window.addEventListener("resize", debounce(updateSize, 200));
     return () => {
       window.removeEventListener("resize", debounce(updateSize, 200));

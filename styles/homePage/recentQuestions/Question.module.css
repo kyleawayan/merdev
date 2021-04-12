@@ -1,6 +1,22 @@
 .question {
-  height: 57px;
   border-bottom: 1px var(--grey1) solid;
   display: flex;
   width: 100%;
+}
+
+.title {
+  margin: 10px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 780px) {
+  .question {
+    display: block;
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
+  .title {
+    margin-left: 0px;
+    margin-bottom: 20px;
+  }
 }
