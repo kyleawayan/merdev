@@ -9,6 +9,26 @@ import {
   upvote,
 } from "../../../utils/vote/updateQuestionOrAnswerVote";
 import { questionVoteDoc, answerVoteDoc } from "./../../../utils/vote/voteDocs";
+import throttle from "lodash.throttle";
+
+const voteThrottle = throttle(
+  (requestedState, questionId, userUid, type, answerId) => {
+    console.log("upvoted");
+    switch (requestedState) {
+      case -1:
+        downvote(questionId, userUid, type, answerId);
+        break;
+      case 0:
+        clearVote(questionId, userUid, type, answerId);
+        break;
+      case 1:
+        upvote(questionId, userUid, type, answerId);
+        break;
+    }
+  },
+  1000,
+  { trailing: false }
+);
 
 interface UpvoterProps {
   questionId: string;
@@ -31,20 +51,20 @@ export default function Upvoter({
   const upvotePress = () => {
     if (voteState != 1) {
       setBuffer(1 - voteState);
-      upvote(questionId, userUid, type, answerId);
+      voteThrottle(1, questionId, userUid, type, answerId);
     } else {
       setBuffer(0);
-      clearVote(questionId, userUid, type, answerId);
+      voteThrottle(0, questionId, userUid, type, answerId);
     }
   };
 
   const downvotePress = () => {
     if (voteState != -1) {
       setBuffer(-1 - voteState);
-      downvote(questionId, userUid, type, answerId);
+      voteThrottle(-1, questionId, userUid, type, answerId);
     } else {
       setBuffer(0);
-      clearVote(questionId, userUid, type, answerId);
+      voteThrottle(0, questionId, userUid, type, answerId);
     }
   };
 
