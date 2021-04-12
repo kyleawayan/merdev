@@ -9,5 +9,5 @@
 
 .highlighted {
   outline: 2px var(--green) solid;
-  outline-offset: 5px;
+  outline-offset: 4px;
 }
