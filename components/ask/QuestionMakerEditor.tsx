@@ -27,7 +27,7 @@ export default function QuestionMakerEditor() {
         userUid: auth.user.uid,
         displayName: auth.user.displayName,
         timestamp: new Date(),
-        markdown: btoa(value),
+        markdown: value,
         counters: {
           votes: 0,
           answers: 0,
