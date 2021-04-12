@@ -18,6 +18,14 @@ describe("Test Sign Up", function () {
       .filter('[type="password"]')
       .type("mymom123", { delay: 100 })
       .should("have.value", "mymom123");
-    cy.get("form").find("button").filter('[type="submit"]').click();
+    cy.get("form")
+      .find("button")
+      .filter('[type="submit"]')
+      .click();
+    cy.get("span")
+      .contains("dave");
+    cy.get("button")
+      .contains("sign out")
+      .click();
   });
 });
