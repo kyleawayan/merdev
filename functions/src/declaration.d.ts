@@ -31,6 +31,7 @@ interface Answer {
   timestamp: Date; // idk if it's actually a date type in firestore admin
   comments: Array<Comment>;
   marked: boolean;
+  counters: CommentOrAnswerCounters;
 }
 
 interface QuestionOrAnswerComment {

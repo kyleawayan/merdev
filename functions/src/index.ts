@@ -4,10 +4,18 @@ import * as functions from "firebase-functions";
 
 admin.initializeApp(functions.config().firebase);
 
-import { updateVoteCounter } from "./vote/voteCounter";
+import {
+  updateQuestionVoteCounter,
+  updateAnswerVoteCounter,
+  updateQuestionCommentVoteCounter,
+  updateAnswerCommentVoteCounter,
+} from "./vote/voteCounter";
 import { updateAnswerCounter } from "./answer/answerCounter";
 import { markSolved } from "./answer/markSolved";
 
-exports.updateVoteCounter = updateVoteCounter;
+exports.updateQuestionVoteCounter = updateQuestionVoteCounter;
+exports.updateAnswerVoteCounter = updateAnswerVoteCounter;
+exports.updateQuestionCommentVoteCounter = updateQuestionCommentVoteCounter;
+exports.updateAnswerCommentVoteCounter = updateAnswerCommentVoteCounter;
 exports.updateAnswerCounter = updateAnswerCounter;
 exports.markSolved = markSolved;

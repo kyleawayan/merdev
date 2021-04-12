@@ -8,13 +8,9 @@ export function clearVote(
   answerId?: string
 ) {
   if (on == "question") {
-    questionCommentVoteDoc(questionId, userUid, commentId).set({
-      state: 0,
-    });
+    questionCommentVoteDoc(questionId, userUid, commentId).delete();
   } else if (on == "answer" && answerId) {
-    answerCommentVoteDoc(questionId, userUid, answerId, commentId).set({
-      state: 0,
-    });
+    answerCommentVoteDoc(questionId, userUid, answerId, commentId).delete();
   }
 }
 
