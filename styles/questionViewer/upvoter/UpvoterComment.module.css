@@ -1,9 +1,10 @@
-.voter span {
-  margin-right: 4px;
+.voter {
+  display: flex;
+  gap: 5px;
 }
 
 .voteNumber {
-  width: 20px;
+  min-width: 30px;
   display: inline-block;
   text-align: center;
 }
