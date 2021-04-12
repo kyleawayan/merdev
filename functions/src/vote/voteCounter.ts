@@ -1,13 +1,15 @@
-/* eslint-disable max-len */
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
 const db = admin.firestore();
 
-export const updateAnswerCounter = functions.firestore
-  .document("questions/{questionId}/answers/{answerId}")
-  .onCreate(async (snap, context) => {
+export const updateVoteCounter = functions.firestore
+  .document("questions/{questionId}/votes/{userUid}")
+  .onWrite(async (change, context) => {
     const questionId = context.params.questionId;
+    const beforeState = change.before.data()?.state ?? (0 as Votes);
+    const afterState = change.after.data()?.state ?? (0 as Votes);
+    console.log(beforeState, afterState);
     const currentQuestionDoc = (await (
       await db.collection("questions").doc(questionId).get()
     ).data()) as Question;
@@ -15,6 +17,7 @@ export const updateAnswerCounter = functions.firestore
       .collection("questions")
       .doc(questionId)
       .update({
-        "counters.answers": currentQuestionDoc.counters.answers + 1,
+        "counters.votes":
+          currentQuestionDoc.counters.votes + afterState - beforeState,
       });
   });
