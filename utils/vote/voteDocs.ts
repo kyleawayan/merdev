@@ -8,46 +8,35 @@ function questionDoc(
   return db.collection("questions").doc(questionId);
 }
 
-export function checkQuestionVote(
-  questionId: string,
-  userUid: string
-): Promise<
-  firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData>
-> {
-  return questionDoc(questionId).collection("votes").doc(userUid).get();
+export function questionVoteDoc(questionId: string, userUid: string) {
+  return questionDoc(questionId).collection("votes").doc(userUid);
 }
 
-export function checkAnswerVote(
+export function answerVoteDoc(
   questionId: string,
   userUid: string,
   answerId: string
-): Promise<
-  firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData>
-> {
+) {
   return questionDoc(questionId)
     .collection("answers")
     .doc(answerId)
     .collection("votes")
-    .doc(userUid)
-    .get();
+    .doc(userUid);
 }
 
-export function checkQuestionCommentVote(
+export function questionCommentVoteDoc(
   questionId: string,
   userUid: string,
   commentId: string
-): Promise<
-  firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData>
-> {
+) {
   return questionDoc(questionId)
     .collection("questionComments")
     .doc(commentId)
     .collection("votes")
-    .doc(userUid)
-    .get();
+    .doc(userUid);
 }
 
-export function checkAnswerCommentVote(
+export function answerCommentVoteDoc(
   questionId: string,
   userUid: string,
   answerId: string,
@@ -59,6 +48,5 @@ export function checkAnswerCommentVote(
     .collection("answerComments")
     .doc(commentId)
     .collection("votes")
-    .doc(userUid)
-    .get();
+    .doc(userUid);
 }

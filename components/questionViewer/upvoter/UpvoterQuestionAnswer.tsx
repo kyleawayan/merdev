@@ -2,20 +2,13 @@ import React, { useEffect, useState } from "react";
 import DownArrow from "./DownArrow";
 import UpArrow from "./UpArrow";
 import styles from "../../../styles/questionViewer/upvoter/Upvoter.module.css";
-import firebase from "firebase/app";
-import { checkAnswerVote, checkQuestionVote } from "../../../utils/checkVote";
 import { useAuth } from "../../../utils/use-auth";
-
-const vote = firebase.functions().httpsCallable("votes");
-
-function unvote(questionId: string, action: number, answerId?: string) {
-  return vote({
-    questionId: questionId,
-    answerId: answerId,
-    action: action,
-    setState: 0,
-  });
-}
+import {
+  clearVote,
+  downvote,
+  upvote,
+} from "../../../utils/vote/updateQuestionOrAnswerVote";
+import { questionVoteDoc, answerVoteDoc } from "./../../../utils/vote/voteDocs";
 
 interface UpvoterProps {
   questionId: string;
@@ -31,68 +24,46 @@ export default function Upvoter({
   votes,
 }: UpvoterProps) {
   const auth = useAuth();
-  const [offset, setOffset] = useState(0);
   const [voteState, setVoteState] = useState(0);
+  const userUid = auth.user.uid;
 
-  const upvote = () => {
+  const upvotePress = () => {
     if (voteState != 1) {
-      setOffset(1);
-      setVoteState(1);
-      vote({
-        questionId: questionId,
-        answerId: answerId,
-        action: type == "question" ? 0 : 1,
-        setState: 1,
-      });
+      upvote(questionId, userUid, type, answerId);
     } else {
-      setOffset(-1);
-      setVoteState(0);
-      unvote(questionId, type == "question" ? 0 : 1, answerId);
+      clearVote(questionId, userUid, type, answerId);
     }
   };
 
-  const downvote = () => {
+  const downvotePress = () => {
     if (voteState != -1) {
-      setOffset(-1);
-      setVoteState(-1);
-      vote({
-        questionId: questionId,
-        answerId: answerId,
-        action: type == "question" ? 0 : 1,
-        setState: -1,
-      });
+      downvote(questionId, userUid, type, answerId);
     } else {
-      setOffset(1);
-      setVoteState(0);
-      unvote(questionId, type == "question" ? 0 : 1, answerId);
+      clearVote(questionId, userUid, type, answerId);
     }
   };
 
   useEffect(() => {
     const userUid = auth.user.uid;
     if (type == "question") {
-      checkQuestionVote(questionId, userUid).then((doc) => {
-        setVoteState(doc.data()?.state ?? 0);
+      questionVoteDoc(questionId, userUid).onSnapshot((snapshot) => {
+        setVoteState(snapshot.data()?.state ?? 0);
       });
     } else if (answerId) {
-      checkAnswerVote(questionId, userUid, answerId).then((doc) => {
-        setVoteState(doc.data()?.state ?? 0);
+      answerVoteDoc(questionId, userUid, answerId).onSnapshot((snapshot) => {
+        setVoteState(snapshot.data()?.state ?? 0);
       });
     }
-  }, [votes]);
-
-  useEffect(() => {
-    setOffset(0);
-  }, [votes]);
+  });
 
   return (
     <div className={styles.voter}>
       <div>
-        <UpArrow onClick={upvote} highlighted={voteState == 1} />
+        <UpArrow onClick={upvotePress} highlighted={voteState == 1} />
       </div>
-      <div className={styles.voteNumber}>{votes + offset}</div>
+      <div className={styles.voteNumber}>{votes}</div>
       <div>
-        <DownArrow onClick={downvote} highlighted={voteState == -1} />
+        <DownArrow onClick={downvotePress} highlighted={voteState == -1} />
       </div>
     </div>
   );

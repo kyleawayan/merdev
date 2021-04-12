@@ -4,6 +4,26 @@ service cloud.firestore {
     match /questions/{questionId}/answers/{answerId} {
       allow update: if get(/databases/$(database)/documents/questions/$(questionId)).data.userUid == request.auth.uid;
     }
+    match /questions/{questionId}/votes/{userUid} {
+      allow read;
+      allow create: if request.auth != null;
+      allow write: if userUid == request.auth.uid
+    }
+    match /questions/{questionId}/questionComments/{commentId}/votes/{userUid} {
+      allow read;
+      allow create: if request.auth != null;
+      allow write: if userUid == request.auth.uid
+    }
+    match /questions/{questionId}/answers/{answerId}/votes/{userUid} {
+      allow read;
+      allow create: if request.auth != null;
+      allow write: if userUid == request.auth.uid
+    }
+    match /questions/{questionId}/answers/{answerId}/answerComments/{commentId}/votes/{userUid} {
+      allow read;
+      allow create: if request.auth != null;
+      allow write: if userUid == request.auth.uid
+    }
     match /questions/{questionId}/{document=**} {
       allow read;
       allow create: if request.auth != null;
