@@ -29,7 +29,7 @@ export default function SingleComment({
           />
         </div>
         <div className={styles.text}>
-          <Text value={atob(data.markdown) + ` – ${data.displayName}`} />
+          <Text value={data.markdown + ` – ${data.displayName}`} />
         </div>
       </div>
       <div className={styles.line} />

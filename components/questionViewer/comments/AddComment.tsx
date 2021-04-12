@@ -20,7 +20,7 @@ export default function AddComment({ id, to, answerId }: AddCommentProps) {
       .add({
         userUid: auth.user.uid,
         displayName: auth.user.displayName,
-        markdown: btoa(value),
+        markdown: value,
         timestamp: new Date(),
         counters: {
           votes: 0,
