@@ -30,23 +30,32 @@ export default function UpvoterComment({
 }: UpvoterProps) {
   const auth = useAuth();
   const [voteState, setVoteState] = useState(0);
+  const [buffer, setBuffer] = useState(0);
   const userUid = auth.user.uid;
 
   const upvotePress = () => {
     if (voteState != 1) {
+      setBuffer(1 - voteState);
       upvote(questionId, userUid, commentId, on, answerId);
     } else {
+      setBuffer(0);
       clearVote(questionId, userUid, commentId, on, answerId);
     }
   };
 
   const downvotePress = () => {
     if (voteState != -1) {
+      setBuffer(-1 - voteState);
       downvote(questionId, userUid, commentId, on, answerId);
     } else {
+      setBuffer(0);
       clearVote(questionId, userUid, commentId, on, answerId);
     }
   };
+
+  useEffect(() => {
+    setBuffer(0);
+  }, [votes]);
 
   useEffect(() => {
     const userUid = auth.user.uid;
@@ -74,7 +83,7 @@ export default function UpvoterComment({
           highlighted={voteState == 1}
         />
       </span>
-      <span className={styles.voteNumber}>{votes}</span>
+      <span className={styles.voteNumber}>{votes + buffer}</span>
       <span>
         <DownArrow
           width={18}
