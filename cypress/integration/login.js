@@ -20,9 +20,7 @@ describe("Test Sign Up", function () {
       cy.get("span")
       .contains("dave");
       cy.get("button")
-        .contains("sign out")
-        .click();
-
+        .contains("sign out");
     });
   });
   

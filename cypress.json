@@ -1,3 +1,12 @@
 {
-  "baseUrl": "http://localhost:3000"
+  "baseUrl": "http://localhost:3000",
+  "testFiles": [
+    "integration/*.js",
+    "it_loads.js",
+    "homepage_buttons.js",
+    "sign_up.js",
+    "login.js",
+    "questions.js",
+    "voting_test.js"
+  ]
 }
