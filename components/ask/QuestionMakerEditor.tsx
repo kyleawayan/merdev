@@ -42,7 +42,7 @@ export default function QuestionMakerEditor() {
       className={styles.questionMakerEditor}
       style={{ backgroundImage: "/" }}
     >
-      <div className={styles.questionTitleInput}>
+      <div className={styles.questionTitleInput} id="titleTextBox">
         <input
           placeholder="enter question title here"
           value={title}
