@@ -34,7 +34,7 @@ export default function QuestionViewer() {
   return (
     <div className="globalContainer">
       <Question data={data} />
-      <Answers questionId={data.id} questionUserUid={data.userUid} />
+      <Answers questionId={data.id} questionUserUid={data.author.userUid} />
     </div>
   );
 }
