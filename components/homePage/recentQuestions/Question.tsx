@@ -15,7 +15,10 @@ export default function Question({ data }: QuestionProps) {
       <div className={styles.title}>
         <Title title={data.title} tags={data.tags} id={data.id} />
       </div>
-      <Author displayName={data.displayName} timestamp={data.timestamp} />
+      <Author
+        displayName={data.author.displayName}
+        timestamp={data.timestamp}
+      />
     </div>
   );
 }

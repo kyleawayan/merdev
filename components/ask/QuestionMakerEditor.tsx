@@ -24,8 +24,10 @@ export default function QuestionMakerEditor() {
       .add({
         title: title,
         tags: ["tag", "another tag", "another tag"],
-        userUid: auth.user.uid,
-        displayName: auth.user.displayName,
+        author: {
+          userUid: auth.user.uid,
+          displayName: auth.user.displayName,
+        },
         timestamp: new Date(),
         markdown: value,
         counters: {

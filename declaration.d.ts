@@ -8,16 +8,19 @@ interface CommentOrAnswerCounters {
   votes: number;
 }
 
-interface Comment {
-  userUid: string;
+interface Author {
   displayName: string;
+  userUid: string;
+}
+
+interface Comment {
+  author: Author;
   markdown: string;
   timestamp: FirestoreDate;
 }
 
 interface Answer {
-  userUid: string;
-  displayName: string;
+  author: Author;
   markdown: string;
   timestamp: FirestoreDate;
   comments: Array<Comment>;
@@ -31,8 +34,7 @@ interface FirestoreDate {
 interface Question {
   title: string;
   tags: Array<string>;
-  userUid: string;
-  displayName: string;
+  author: Author;
   timestamp: FirestoreDate;
   markdown: string;
   counters: QuestionCounters;
@@ -41,8 +43,7 @@ interface Question {
 }
 
 interface QuestionOrAnswerComment {
-  userUid: string;
-  displayName: string;
+  author: Author;
   markdown: string;
   timestamp: FirestoreDate;
   counters: CommentOrAnswerCounters;
@@ -51,8 +52,7 @@ interface QuestionOrAnswerComment {
 
 interface Answer {
   id: string;
-  userUid: string;
-  displayName: string;
+  author: Author;
   markdown: string;
   timestamp: FirestoreDate;
   counters: CommentOrAnswerCounters;
