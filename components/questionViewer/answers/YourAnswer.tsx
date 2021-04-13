@@ -20,8 +20,10 @@ export default function YourAnswer({ questionId, submitted }: YourAnswerProps) {
       .doc(questionId)
       .collection("answers")
       .add({
-        userUid: auth.user.uid,
-        displayName: auth.user.displayName,
+        author: {
+          userUid: auth.user.uid,
+          displayName: auth.user.author.displayName,
+        },
         markdown: btoa(value),
         timestamp: new Date(),
         counters: {

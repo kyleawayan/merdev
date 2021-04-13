@@ -40,7 +40,9 @@ body {
   --black-hover: #37352f86;
   --grey1: #dddddd; /* for lines, borders, and tag boxes */
   --grey2: #858585; /* for secondary, not so important buttons or items */
+  --grey3: #f4f4f4; /* for "floating card" backgrounds and menu bg color */
   --green: #53ba7d;
+  --orange: #ffa755;
 }
 
 a {
@@ -52,12 +54,6 @@ a {
   box-sizing: border-box;
 }
 
-.globalContainer {
-  max-width: var(--merdev-max-width);
-  margin: auto;
-  padding: 14px;
-}
-
 button {
   background-color: var(--black);
   color: var(--white);
@@ -65,6 +61,13 @@ button {
   border: none;
   cursor: pointer;
   transition: 0.05s;
+  height: 30px;
+}
+
+.globalContainer {
+  max-width: var(--merdev-max-width);
+  margin: auto;
+  padding: 14px;
 }
 
 button:hover {

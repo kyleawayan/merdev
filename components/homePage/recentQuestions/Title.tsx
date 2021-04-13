@@ -14,8 +14,6 @@ export default function Title({ title, tags, id }: TitleProps) {
       style={{
         fontSize: "18px",
         fontWeight: 600,
-        margin: "6px",
-        width: "80%",
       }}
     >
       <Link href={`/question/${id}`} prefetch={false}>

@@ -10,25 +10,7 @@ import {
 } from "../../../utils/vote/updateQuestionOrAnswerVote";
 import { questionVoteDoc, answerVoteDoc } from "./../../../utils/vote/voteDocs";
 import throttle from "lodash.throttle";
-
-const voteThrottle = throttle(
-  (requestedState, questionId, userUid, type, answerId) => {
-    console.log("upvoted");
-    switch (requestedState) {
-      case -1:
-        downvote(questionId, userUid, type, answerId);
-        break;
-      case 0:
-        clearVote(questionId, userUid, type, answerId);
-        break;
-      case 1:
-        upvote(questionId, userUid, type, answerId);
-        break;
-    }
-  },
-  1000,
-  { trailing: false }
-);
+import { useRouter } from "next/router";
 
 interface UpvoterProps {
   questionId: string;
@@ -44,27 +26,49 @@ export default function Upvoter({
   votes,
 }: UpvoterProps) {
   const auth = useAuth();
+  const router = useRouter();
   const [voteState, setVoteState] = useState(0);
   const [buffer, setBuffer] = useState(0);
   const userUid = auth.user.uid;
 
+  const voteThrottle = throttle(
+    (requestedState) => {
+      if (auth.user) {
+        switch (requestedState) {
+          case -1:
+            downvote(questionId, userUid, type, answerId);
+            break;
+          case 0:
+            clearVote(questionId, userUid, type, answerId);
+            break;
+          case 1:
+            upvote(questionId, userUid, type, answerId);
+            break;
+        }
+      } else {
+        router.push("/signup");
+      }
+    },
+    1000,
+    { trailing: false }
+  );
+
   const upvotePress = () => {
     if (voteState != 1) {
-      setBuffer(1 - voteState);
-      voteThrottle(1, questionId, userUid, type, answerId);
+      voteThrottle(1);
     } else {
       setBuffer(0);
-      voteThrottle(0, questionId, userUid, type, answerId);
+      voteThrottle(0);
     }
   };
 
   const downvotePress = () => {
     if (voteState != -1) {
       setBuffer(-1 - voteState);
-      voteThrottle(-1, questionId, userUid, type, answerId);
+      voteThrottle(-1);
     } else {
       setBuffer(0);
-      voteThrottle(0, questionId, userUid, type, answerId);
+      voteThrottle(0);
     }
   };
 

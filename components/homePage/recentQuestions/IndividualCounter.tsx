@@ -15,7 +15,9 @@ export default function IndividualCounter({
   return (
     <span className={isHighlighted ? styles.highlighted : ""}>
       <div className={styles.counter}>{count}</div>
-      <div className={styles.label}>{label}</div>
+      <div className={styles.label}>
+        {count != 1 ? label : label.slice(0, -1)}
+      </div>
     </span>
   );
 }

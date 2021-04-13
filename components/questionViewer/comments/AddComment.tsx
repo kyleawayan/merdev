@@ -18,9 +18,11 @@ export default function AddComment({ id, to, answerId }: AddCommentProps) {
   const submitComment = () => {
     addComment(id, to, answerId)
       .add({
-        userUid: auth.user.uid,
-        displayName: auth.user.displayName,
-        markdown: btoa(value),
+        author: {
+          userUid: auth.user.uid,
+          displayName: auth.user.displayName,
+        },
+        markdown: value,
         timestamp: new Date(),
         counters: {
           votes: 0,

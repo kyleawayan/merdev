@@ -51,7 +51,7 @@ export default function Question({ data }: QuestionProps) {
           votes={data.counters.votes}
         />
         <div className={styles.markdown}>
-          <Text value={atob(data.markdown)} />
+          <Text value={data.markdown} />
         </div>
       </div>
       <div className={styles.indented}>

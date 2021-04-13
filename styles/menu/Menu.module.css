@@ -1,7 +1,7 @@
 .menuContainerContainer {
   height: 48px;
   width: 100%;
-  background-color: #f4f4f4;
+  background-color: var(--grey3);
 }
 
 .menu {
@@ -25,4 +25,8 @@
   margin-right: 10px;
   text-align: right;
   vertical-align: middle;
+}
+
+.mobileSearch {
+  margin-left: 20px;
 }

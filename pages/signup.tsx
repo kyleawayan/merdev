@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React from "react";
 import Center from "../components/utils/CenterWholePage";
-import styles from "../styles/signup/signup.module.css";
+import styles from "../styles/signup/signUpAndSignIn.module.css";
 import { useAuth } from "../utils/use-auth";
 import { useRouter } from "next/router";
 
@@ -16,23 +16,26 @@ export default function SignUp() {
           <h1>Join the [community name] community</h1>
           <Formik
             initialValues={{ displayName: "", email: "", password: "" }}
-            // validate={(values) => {  // form validation stuff i'll add later
-            //   const errors = {};
-            //   if (!values.email) {
-            //     errors.email = "Required email";
-            //   } else if (
-            //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            //   ) {
-            //     errors.email = "Invalid email address";
-            //   }
-            //   if (!values.displayName) {
-            //     errors.displayName = "required display name";
-            //   }
-            //   if (!values.password) {
-            //     errors.password = "no password"; // 6 characters
-            //   }
-            //   return errors;
-            // }}
+            validate={(values) => {
+              const errors: Record<string, string> = {};
+              if (!values.email) {
+                errors.email = "(Required email)";
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              ) {
+                errors.email = "(Invalid email address)";
+              }
+              if (!values.displayName) {
+                errors.displayName = "(Please put in a display name)";
+              }
+              if (!values.password) {
+                errors.password = "(Please put in a passowrd)";
+              }
+              if (values.password.length <= 6) {
+                errors.password = "(Needs to be at least 6 characters)";
+              }
+              return errors;
+            }}
             onSubmit={(values, { setSubmitting }) => {
               auth
                 .signup(values.email, values.password, values.displayName)
@@ -57,7 +60,15 @@ export default function SignUp() {
             }) => (
               <form onSubmit={handleSubmit}>
                 <div>
-                  <label>Display name</label>
+                  <label>
+                    Display name
+                    <span className={styles.warning}>
+                      {" "}
+                      {errors.displayName &&
+                        touched.displayName &&
+                        errors.displayName}
+                    </span>
+                  </label>
                   <input
                     type="text"
                     name="displayName"
@@ -67,7 +78,13 @@ export default function SignUp() {
                   />
                 </div>
                 <div>
-                  <label>Email</label>
+                  <label>
+                    Email{" "}
+                    <span className={styles.warning}>
+                      {" "}
+                      {errors.email && touched.email && errors.email}
+                    </span>
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -77,8 +94,13 @@ export default function SignUp() {
                   />
                 </div>
                 <div>
-                  {errors.email && touched.email && errors.email}
-                  <label>Password needs to be 6 characters at least</label>
+                  <label>
+                    Password{" "}
+                    <span className={styles.warning}>
+                      {" "}
+                      {errors.password && touched.password && errors.password}
+                    </span>
+                  </label>
                   <input
                     type="password"
                     name="password"
@@ -87,8 +109,6 @@ export default function SignUp() {
                     value={values.password}
                   />
                 </div>
-
-                {errors.password && touched.password && errors.password}
                 <button type="submit" disabled={isSubmitting}>
                   Submit
                 </button>

@@ -24,10 +24,12 @@ export default function QuestionMakerEditor() {
       .add({
         title: title,
         tags: ["tag", "another tag", "another tag"],
-        userUid: auth.user.uid,
-        displayName: auth.user.displayName,
+        author: {
+          userUid: auth.user.uid,
+          displayName: auth.user.displayName,
+        },
         timestamp: new Date(),
-        markdown: btoa(value),
+        markdown: value,
         counters: {
           votes: 0,
           answers: 0,
@@ -50,7 +52,9 @@ export default function QuestionMakerEditor() {
         />
       </div>
       <MarkdownEditor value={value} onChange={setValue} />
-      <button onClick={submitQuestion}>submit question</button>
+      <div className={styles.submitQuestion}>
+        <button onClick={submitQuestion}>Submit Question</button>
+      </div>
     </div>
   );
 }

@@ -19,3 +19,10 @@
 .line {
   border-bottom: 1px var(--grey1) solid;
 }
+
+@media only screen and (max-width: 780px) {
+  .markdown {
+    width: calc(100% - 40px);
+    max-width: 414px;
+  }
+}

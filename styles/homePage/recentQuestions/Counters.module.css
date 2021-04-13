@@ -5,5 +5,13 @@
 }
 
 .counters span {
-  margin-right: 15px;
+  width: 60px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 780px) {
+  .counters {
+    margin-left: -15px;
+    margin-top: 15px;
+  }
 }
