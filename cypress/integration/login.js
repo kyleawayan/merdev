@@ -1,5 +1,5 @@
-describe("Test Sign Up", function () {
-    it("Visit Page Sign Up", function () {
+describe("Test Login", function () {
+    it("Visit Page Login", function () {
       cy.visit("/login");
   
       cy.get("form")
