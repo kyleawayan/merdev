@@ -24,5 +24,16 @@ module.exports = {
   rules: {
     quotes: ["error", "double"],
     indent: "off",
+    "object-curly-spacing": "off",
+    "require-jsdoc": "off",
+    "max-len": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "valid-jsdoc": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "operator-linebreak": "off",
+    "prefer-const": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    curly: "off",
+    "@typescript-eslint/no-inferrable-types": "off",
   },
 };
