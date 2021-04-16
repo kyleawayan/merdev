@@ -24,7 +24,7 @@ export default function YourAnswer({ questionId, submitted }: YourAnswerProps) {
           userUid: auth.user.uid,
           displayName: auth.user.displayName,
         },
-        markdown: btoa(value),
+        markdown: value,
         timestamp: new Date(),
         counters: {
           votes: 0,

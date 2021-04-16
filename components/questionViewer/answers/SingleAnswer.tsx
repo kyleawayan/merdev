@@ -7,6 +7,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import { useAuth } from "../../../utils/use-auth";
 import Solved from "./Solved";
+import Controls from "../Controls";
 
 const db = firebase.firestore();
 
@@ -65,7 +66,15 @@ export default function SingleAnswer({
             />
           </div>
           <div className={styles.markdown}>
-            <Text value={atob(data.markdown)} />
+            <Text value={data.markdown} />
+            <div className={styles.controls}>
+              <Controls
+                postUserUid={data.author.userUid}
+                on="answer"
+                questionId={questionId}
+                answerId={data.id}
+              />
+            </div>
           </div>
         </div>
         <div className={styles.indented}>

@@ -27,6 +27,11 @@
   max-width: 800px;
 }
 
+.controls {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 780px) {
   .markdown {
     width: calc(100% - 40px);

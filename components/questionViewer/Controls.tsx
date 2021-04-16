@@ -32,10 +32,18 @@ export default function Controls({
     }
   };
 
+  const editPost = () => {
+    if (on == "question") {
+      router.push(`/edit?questionId=${questionId}`);
+    } else if (on == "answer" && answerId) {
+      router.push(`/edit?questionId=${questionId}&answerId=${answerId}`);
+    }
+  };
+
   return (
     <div className={styles.controls}>
       <span>Share</span>
-      {postUserUid == auth.user.uid && <span>Edit</span>}
+      {postUserUid == auth.user.uid && <span onClick={editPost}>Edit</span>}
       {postUserUid == auth.user.uid && <span onClick={deletePost}>Delete</span>}
     </div>
   );

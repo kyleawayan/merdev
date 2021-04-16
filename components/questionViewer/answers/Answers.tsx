@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
-import "firebase/firestore";
 import SingleAnswer from "./SingleAnswer";
 import YourAnswer from "./YourAnswer";
 import AddAnswer from "./AddAnswer";
