@@ -22,10 +22,15 @@ export default function SingleComment({
   const [hovering, setHovering] = useState(false);
 
   const deleteComment = () => {
-    if (on == "question") {
-      questionCommentDoc(questionId, data.id).delete();
-    } else if (on == "answer" && answerId) {
-      answerCommentDoc(questionId, answerId, data.id).delete();
+    let confirm = window.confirm(
+      "Are you sure you want to delete this comment?"
+    );
+    if (confirm) {
+      if (on == "question") {
+        questionCommentDoc(questionId, data.id).delete();
+      } else if (on == "answer" && answerId) {
+        answerCommentDoc(questionId, answerId, data.id).delete();
+      }
     }
   };
 

@@ -22,7 +22,7 @@ export default function YourAnswer({ questionId, submitted }: YourAnswerProps) {
       .add({
         author: {
           userUid: auth.user.uid,
-          displayName: auth.user.author.displayName,
+          displayName: auth.user.displayName,
         },
         markdown: btoa(value),
         timestamp: new Date(),
