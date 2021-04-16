@@ -2,9 +2,7 @@ import firebase from "firebase/app";
 
 const db = firebase.firestore();
 
-function questionDoc(
-  questionId: string
-): firebase.firestore.DocumentReference<firebase.firestore.DocumentData> {
+export function questionDoc(questionId: string) {
   return db.collection("questions").doc(questionId);
 }
 

@@ -1,0 +1,8 @@
+.controls {
+  color: var(--grey2);
+}
+
+.controls span {
+  margin-right: 10px;
+  cursor: pointer;
+}

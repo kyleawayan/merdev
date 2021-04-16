@@ -6,6 +6,7 @@ import Text from "../Text";
 import Comments from "../comments/Comments";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import Controls from "../Controls";
 
 const db = firebase.firestore();
 
@@ -52,6 +53,13 @@ export default function Question({ data }: QuestionProps) {
         />
         <div className={styles.markdown}>
           <Text value={data.markdown} />
+          <div className={styles.controls}>
+            <Controls
+              postUserUid={data.author.userUid}
+              on="question"
+              questionId={data.id}
+            />
+          </div>
         </div>
       </div>
       <div className={styles.indented}>
