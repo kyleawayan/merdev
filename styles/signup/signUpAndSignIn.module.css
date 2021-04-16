@@ -1,5 +1,5 @@
 .signUpContainer {
-  background-color: white;
+  background-color: var(--grey3);
   padding: 30px;
   width: 400px;
 }

@@ -12,5 +12,7 @@
   height: 30px;
   width: 60%;
   max-width: 800px;
-  border: 1px solid #dbdbdb;
+  border: 1px solid var(--search-bar-border);
+  background-color: var(--search-bar-bg);
+  color: inherit;
 }

@@ -6,6 +6,7 @@ import SignInSignUp from "./SignInSignUp";
 import { useAuth } from "../../utils/use-auth";
 import SearchBarMobile from "./search/SearchBarMobile";
 import debounce from "debounce";
+import ToggleButton from "../themeToggle/ToggleButton";
 
 export default function Menu() {
   const auth = useAuth();
@@ -36,11 +37,15 @@ export default function Menu() {
             <SearchBarMobile />
           </span>
         )}
+        <span className={styles.themeButton}>
+          <ToggleButton />
+        </span>
+
         {!auth.user && <SignInSignUp />}
         {auth.user && (
           <div className={styles.usernameAndSignOut}>
             <span className={styles.username}>{auth.user.displayName}</span>
-            <button onClick={auth.signout}>sign out</button>
+            <button onClick={auth.signout}>Sign out</button>
           </div>
         )}
       </div>

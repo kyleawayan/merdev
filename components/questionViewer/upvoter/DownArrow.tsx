@@ -23,7 +23,7 @@ export default function DownArrow({
     >
       <path
         d="M12 15L0.741669 0L23.2583 0L12 15Z"
-        fill={highlighted ? "orange" : "#C4C4C4"}
+        fill={highlighted ? "var(--orange)" : "var(--arrow-unhighlighted)"}
       />
     </svg>
   );

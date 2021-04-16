@@ -11,7 +11,7 @@ export default function SignUp() {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div style={{ backgroundColor: "lightgrey" }}>
+    <div style={{ backgroundColor: "var(--secondary-bg)" }}>
       <Center>
         <div className={styles.signUpContainer}>
           <h1>Join the [community name] community</h1>

@@ -1,11 +1,9 @@
 import React from "react";
-import "react-mde/lib/styles/css/react-mde-all.css";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import math from "remark-math";
 import { InlineMath, BlockMath } from "react-katex";
-import "katex/dist/katex.min.css";
 
 const renderers = {
   code: ({ language, value }: codeRendererProps) => {

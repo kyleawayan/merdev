@@ -25,24 +25,64 @@
     url("../fonts/Inter-Bold.woff?v=3.18") format("woff");
 }
 
-html,
 body {
+  margin: 0;
+}
+
+html.light-mode,
+body.light-mode {
   padding: 0;
   margin: 0;
   font-family: "Inter";
+  background-color: white;
+  transition: background-color 0.3s ease;
   color: #37352f;
 }
 
-:root {
+html.dark-mode,
+body.dark-mode {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter";
+  background-color: #1d1d1d;
+  transition: background-color 0.3s ease;
+  color: hsla(0, 0%, 100%, 0.9);
+}
+
+.light-mode {
   --merdev-max-width: 1400px;
   --white: rgba(255, 255, 255, 0.9);
   --black: #37352f;
-  --black-hover: #37352f86;
+  --button-color: var(--black);
+  --button-hover: #535047;
+  --search-bar-bg: #ffffff;
+  --search-bar-border: #dbdbdb;
+  --logo-color: var(--black);
   --grey1: #dddddd; /* for lines, borders, and tag boxes */
   --grey2: #858585; /* for secondary, not so important buttons or items */
   --grey3: #f4f4f4; /* for "floating card" backgrounds and menu bg color */
   --green: #53ba7d;
   --orange: #ffa755;
+  --arrow-unhighlighted: #e6e6e6;
+  --secondary-bg: var(--arrow-unhighlighted); /* e.g. login and signup page */
+}
+
+.dark-mode {
+  --merdev-max-width: 1400px;
+  --white: rgba(255, 255, 255, 0.9);
+  --black: #37352f;
+  --button-color: #515151;
+  --button-hover: #6b6b6b;
+  --search-bar-bg: #1d1d1d;
+  --search-bar-border: #484848;
+  --logo-color: #ffffff;
+  --grey1: #343434; /* for lines, borders, and tag boxes */
+  --grey2: #858585; /* for secondary, not so important buttons or items */
+  --grey3: #373737; /* for "floating card" backgrounds and menu bg color */
+  --green: #53ba7d;
+  --orange: #ffa755;
+  --arrow-unhighlighted: #515151;
+  --secondary-bg: var(--arrow-unhighlighted); /* e.g. login and signup page */
 }
 
 a {
@@ -55,13 +95,18 @@ a {
 }
 
 button {
-  background-color: var(--black);
+  background-color: var(--button-color);
   color: var(--white);
   outline: none;
   border: none;
   cursor: pointer;
   transition: 0.05s;
   height: 30px;
+  font-family: "Inter";
+}
+
+input {
+  font-family: "Inter";
 }
 
 .globalContainer {
@@ -71,6 +116,6 @@ button {
 }
 
 button:hover {
-  background-color: var(--black-hover);
+  background-color: var(--button-hover);
   transition: 0.05s;
 }

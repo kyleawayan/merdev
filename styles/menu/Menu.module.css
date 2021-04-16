@@ -29,4 +29,9 @@
 
 .mobileSearch {
   margin-left: 20px;
+  padding: 10px;
+}
+
+.themeButton {
+  margin-left: 10px;
 }

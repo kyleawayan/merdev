@@ -23,7 +23,7 @@ export default function UpArrow({
     >
       <path
         d="M12 0L23.2583 15H0.74167L12 0Z"
-        fill={highlighted ? "orange" : "#C4C4C4"}
+        fill={highlighted ? "var(--orange)" : "var(--arrow-unhighlighted)"}
       />
     </svg>
   );
