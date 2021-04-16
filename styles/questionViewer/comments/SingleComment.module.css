@@ -12,9 +12,14 @@
 }
 
 .text {
-  margin-left: 10px;
+  margin-left: 15px;
   font-size: 14px;
   width: 92%;
+}
+
+.delete {
+  font-size: 14px;
+  color: red;
 }
 
 @media only screen and (max-width: 780px) {
