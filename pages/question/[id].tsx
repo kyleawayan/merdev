@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import Question from "../../components/questionViewer/question/Question";
 import Answers from "../../components/questionViewer/answers/Answers";
+import Head from "next/head";
 
 const db = firebase.firestore();
 
@@ -33,6 +34,13 @@ export default function QuestionViewer() {
 
   return (
     <div className="globalContainer">
+      <Head>
+        <meta
+          property="og:image"
+          content={`https://merdev-og-image-kyleawayan.vercel.app/${data?.title}`}
+        />
+      </Head>
+
       <Question data={data} />
       <Answers questionId={data.id} questionUserUid={data.author.userUid} />
     </div>

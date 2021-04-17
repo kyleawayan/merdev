@@ -7,6 +7,10 @@
 }
 
 .buttons {
-  margin-top: 5px;
+  margin-top: 10px;
   float: right;
+}
+
+.buttons button {
+  margin-left: 5px;
 }

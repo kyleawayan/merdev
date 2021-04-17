@@ -43,8 +43,8 @@ export default function AddComment({ id, to, answerId }: AddCommentProps) {
             <CommentEditor value={value} onChange={setValue} />
           </div>
           <div className={styles.buttons}>
-            <button onClick={() => setEditorOpen(false)}>cancel</button>
-            <button onClick={submitComment}>submit</button>
+            <button onClick={() => setEditorOpen(false)}>Cancel</button>
+            <button onClick={submitComment}>Submit</button>
           </div>
         </div>
       )}
