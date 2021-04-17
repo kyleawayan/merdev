@@ -5,13 +5,14 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  border-bottom: 1px solid $mde-border-color;
+  border-bottom: 1px solid var(--grey2);
   border-radius: $mde-border-radius $mde-border-radius 0 0;
-  background: $mde-toolbar-color;
+  background: transparent;
 
   .mde-tabs {
     display: flex;
     flex-direction: row;
+    display: none;
 
     button {
       border-radius: $mde-border-radius;
@@ -23,7 +24,7 @@
         margin-left: 6px;
       }
       &.selected {
-        border: 1px solid $mde-border-color
+        border: 1px solid $mde-border-color;
       }
     }
   }
@@ -34,7 +35,8 @@
     display: inline-block;
     font-size: inherit;
     overflow: visible;
-    vertical-align: -.125em;
+    vertical-align: -0.125em;
+    color: var(--text-editor-main-color);
   }
 
   ul.mde-header-group {
@@ -116,4 +118,3 @@
     }
   }
 }
-

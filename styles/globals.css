@@ -65,6 +65,7 @@ body.dark-mode {
   --orange: #ffa755;
   --arrow-unhighlighted: #e6e6e6;
   --secondary-bg: var(--arrow-unhighlighted); /* e.g. login and signup page */
+  --text-editor-main-color: var(--black);
 }
 
 .dark-mode {
@@ -83,6 +84,7 @@ body.dark-mode {
   --orange: #ffa755;
   --arrow-unhighlighted: #515151;
   --secondary-bg: var(--arrow-unhighlighted); /* e.g. login and signup page */
+  --text-editor-main-color: var(--white);
 }
 
 a {
@@ -107,6 +109,10 @@ button {
 
 input {
   font-family: "Inter";
+  background: transparent;
+  border: 1px solid var(--grey2);
+  color: inherit;
+  padding: 8px;
 }
 
 .globalContainer {

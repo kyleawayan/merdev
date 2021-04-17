@@ -87,12 +87,12 @@ export default function QuestionMakerEditor({
           />
         </div>
       )}
-      <MarkdownEditor value={value} onChange={setValue} />
-      <div className={styles.submitQuestion}>
-        <button onClick={submitQuestion}>
-          {!defaultValue ? "Submit Question" : "Submit Edit"}
-        </button>
+      <div className={styles.editor}>
+        <MarkdownEditor value={value} onChange={setValue} />
       </div>
+      <button onClick={submitQuestion}>
+        {!defaultValue ? "Submit Question" : "Submit Edit"}
+      </button>
     </div>
   );
 }

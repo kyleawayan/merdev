@@ -3,6 +3,7 @@ import AnswerEditor from "./AnswerEditor";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { useAuth } from "../../../utils/use-auth";
+import styles from "../../../styles/questionViewer/answers/YourAnswer.module.css";
 
 const db = firebase.firestore();
 
@@ -38,9 +39,11 @@ export default function YourAnswer({ questionId, submitted }: YourAnswerProps) {
   };
 
   return (
-    <div style={{ maxWidth: "800px" }}>
-      <AnswerEditor value={value} onChange={setValue} />
-      <button onClick={submitAnswer}>submit</button>
+    <div className={styles.yourAnswer}>
+      <div className={styles.editor}>
+        <AnswerEditor value={value} onChange={setValue} />
+      </div>
+      <button onClick={submitAnswer}>Submit Answer</button>
     </div>
   );
 }
