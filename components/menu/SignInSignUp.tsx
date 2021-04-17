@@ -4,13 +4,17 @@ import Link from "next/link";
 
 export default function SignInSignUp() {
   return (
-    <div className={styles.signInSignUp}>
-      <Link href="/login">
-        <button>Log in</button>
-      </Link>
-      <Link href="/signup">
-        <button>Sign Up</button>
-      </Link>
+    <div>
+      <div className={styles.signIn}>
+          <Link href="/login">
+          <button className={styles.btn}>Log in</button>
+          </Link>
+        </div>
+          <div className={styles.signUp}>
+          <Link href="/signup">
+            <button className={styles.btn}>Sign Up</button>
+          </Link>
+        </div>
     </div>
   );
 }

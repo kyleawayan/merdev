@@ -7,6 +7,7 @@ import { useAuth } from "../../utils/use-auth";
 import SearchBarMobile from "./search/SearchBarMobile";
 import debounce from "debounce";
 import ToggleButton from "../themeToggle/ToggleButton";
+import Link from "next/link";
 
 export default function Menu() {
   const auth = useAuth();
@@ -30,7 +31,11 @@ export default function Menu() {
   return (
     <div className={styles.menuContainerContainer}>
       <div className={styles.menu}>
-        <Logo />
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
         {width > 780 && <SearchBar />}
         {width < 780 && (
           <span className={styles.mobileSearch}>
@@ -40,7 +45,6 @@ export default function Menu() {
         <span className={styles.themeButton}>
           <ToggleButton />
         </span>
-
         {!auth.user && <SignInSignUp />}
         {auth.user && (
           <div className={styles.usernameAndSignOut}>

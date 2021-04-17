@@ -9,6 +9,7 @@
   max-width: var(--merdev-max-width);
   margin: auto;
   padding: 14px;
+  z-index: 1;
 }
 
 .usernameAndSignOut {

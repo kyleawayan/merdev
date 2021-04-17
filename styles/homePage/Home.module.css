@@ -43,6 +43,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   border-radius: 25px;
+  text-transform: uppercase;
+  z-index: 0;
 }
 
 .homebtn:hover {
@@ -52,6 +54,20 @@
 .homepara {
   font-size: 17px;
   text-align: center;
+  color: white;
+}
+
+.homeparainverted {
+  font-size: 17px;
+  text-align: center;
+  color: black;
+}
+
+.homeparalogin {
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  z-index: 0;
 }
 
 .homehr {
@@ -110,4 +126,9 @@
   padding-top: 300px;
   padding-left: 50px;
   height: 300px;
+}
+
+.background {
+  z-index: -1;
+  opacity: 0.9;
 }
