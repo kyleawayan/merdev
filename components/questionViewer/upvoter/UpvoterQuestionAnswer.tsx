@@ -55,6 +55,7 @@ export default function Upvoter({
 
   const upvotePress = () => {
     if (voteState != 1) {
+      setBuffer(1);
       voteThrottle(1);
     } else {
       setBuffer(0);
