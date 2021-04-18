@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NextSeo } from "next-seo";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import Question from "../../components/questionViewer/question/Question";
 import Answers from "../../components/questionViewer/answers/Answers";
-import { GetServerSideProps } from "next";
 
 interface RichData {
   title: string;
@@ -34,31 +34,36 @@ export default function QuestionViewer({ title, description }: RichData) {
     }
   }, [router.query.id]);
 
+  const RichQuestionInfo = () => {
+    return (
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta
+          property="og:image"
+          content={`https://merdev-og-image-kyleawayan.vercel.app/${encodeURI(
+            title
+          )}`}
+        />
+        <meta property="og:description" content={description} />
+        <meta property="og:site_name" content="merdev" />
+      </Head>
+    );
+  };
+
   if (!data) {
-    return <div className="globalContainer">loading</div>;
+    return (
+      <div className="globalContainer">
+        <RichQuestionInfo />
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="globalContainer">
-      <NextSeo
-        title={title}
-        description={description}
-        openGraph={{
-          title: title,
-          description: description,
-          images: [
-            {
-              url: `https://merdev-og-image-kyleawayan.vercel.app/${encodeURI(
-                title
-              )}`,
-              width: 1260,
-              height: 720,
-            },
-          ],
-          site_name: "merdev",
-        }}
-      />
-
+      <RichQuestionInfo />
       <Question data={data} />
       <Answers questionId={data.id} questionUserUid={data.author.userUid} />
     </div>
@@ -72,6 +77,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const json = await res.json();
   const questionData: QuestionFromRestApi = json.fields;
 
+  // everything is optional below
+  // becasue context.query.id is sometimes "noflash.js"
+  // instead of the question id
   const title = questionData?.title.stringValue ?? "";
   const description =
     questionData?.markdown.stringValue.substring(0, 52) +
