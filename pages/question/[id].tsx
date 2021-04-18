@@ -67,7 +67,7 @@ export default function QuestionViewer({ title, description }: RichData) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(
-    `https://firestore.googleapis.com/v1/projects/merdev-7b539/databases/(default)/documents/questions/${context.query.id}`
+    `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_PROJECTID}/databases/(default)/documents/questions/${context.query.id}`
   );
   const json = await res.json();
   const questionData: QuestionFromRestApi = json.fields;
