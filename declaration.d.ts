@@ -42,28 +42,65 @@ interface Question {
   solved: boolean;
 }
 
-interface QuestionFromRestApi {
-  solved: {
-    booleanValue: boolean;
-  };
-  author: {
-    mapValue: {
-      fields: {
-        userUid: {
-          stringValue: string;
-        };
-        displayName: {
-          stringValue: string;
-        };
-      };
-    };
-  };
-  markdown: {
-    stringValue: string;
-  };
-  title: {
-    stringValue: string;
-  };
+interface QuestionFromRESTAPI {
+  solved: Solved;
+  markdown: Markdown;
+  author: Author;
+  timestamp: Timestamp;
+  tags: Tags;
+  title: Markdown;
+  counters: Counters;
+}
+
+interface Author {
+  mapValue: AuthorMapValue;
+}
+
+interface AuthorMapValue {
+  fields: PurpleFields;
+}
+
+interface PurpleFields {
+  displayName: Markdown;
+  userUid: Markdown;
+}
+
+interface Markdown {
+  stringValue: string;
+}
+
+interface Counters {
+  mapValue: CountersMapValue;
+}
+
+interface CountersMapValue {
+  fields: FluffyFields;
+}
+
+interface FluffyFields {
+  views: Answers;
+  votes: Answers;
+  answers: Answers;
+}
+
+interface Answers {
+  integerValue: string;
+}
+
+interface Solved {
+  booleanValue: boolean;
+}
+
+interface Tags {
+  arrayValue: ArrayValue;
+}
+
+interface ArrayValue {
+  values: Markdown[];
+}
+
+interface Timestamp {
+  timestampValue: Date;
 }
 
 interface QuestionOrAnswerComment {

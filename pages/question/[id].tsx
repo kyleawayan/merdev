@@ -6,15 +6,25 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import Question from "../../components/questionViewer/question/Question";
 import Answers from "../../components/questionViewer/answers/Answers";
+import QuestionPreload from "../../components/questionViewer/question/preload/QuestionPreload";
 
 interface RichData {
   title: string;
-  description: string;
+  markdown: string;
+  datePosted: string;
+  tags: Array<string>;
+  votes: number;
 }
 
 const db = firebase.firestore();
 
-export default function QuestionViewer({ title, description }: RichData) {
+export default function QuestionViewer({
+  title,
+  markdown,
+  datePosted,
+  tags,
+  votes,
+}: RichData) {
   const [data, setData] = useState<Question>();
   const router = useRouter();
 
@@ -33,6 +43,9 @@ export default function QuestionViewer({ title, description }: RichData) {
       return () => unsubscribe();
     }
   }, [router.query.id]);
+
+  const description =
+    markdown.substring(0, 52) + `${markdown.length > 52 ? "..." : ""}` ?? "";
 
   const RichQuestionInfo = () => {
     return (
@@ -56,7 +69,13 @@ export default function QuestionViewer({ title, description }: RichData) {
     return (
       <div className="globalContainer">
         <RichQuestionInfo />
-        Loading...
+        <QuestionPreload
+          title={title}
+          tags={tags}
+          datePosted={new Date(datePosted)}
+          markdown={markdown}
+          votes={votes}
+        />
       </div>
     );
   }
@@ -75,20 +94,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_PROJECTID}/databases/(default)/documents/questions/${context.query.id}`
   );
   const json = await res.json();
-  const questionData: QuestionFromRestApi = json.fields;
+  const questionData: QuestionFromRESTAPI = json.fields;
 
   // everything is optional below
   // becasue context.query.id is sometimes "noflash.js"
   // instead of the question id
   const title = questionData?.title.stringValue ?? "";
-  const description =
-    questionData?.markdown.stringValue.substring(0, 52) +
-      `${questionData?.markdown.stringValue.length > 52 ? "..." : ""}` ?? "";
+  const markdown = questionData?.markdown.stringValue ?? "";
+  const datePosted = questionData?.timestamp.timestampValue ?? "";
+  const tags =
+    questionData?.tags.arrayValue.values.map((tag) => tag.stringValue) ?? [];
+  const votes = questionData?.counters.mapValue.fields.votes.integerValue;
 
   return {
     props: {
       title,
-      description,
+      markdown,
+      datePosted,
+      tags,
+      votes,
     },
   };
 };
