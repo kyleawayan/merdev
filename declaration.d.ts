@@ -42,6 +42,30 @@ interface Question {
   solved: boolean;
 }
 
+interface QuestionFromRestApi {
+  solved: {
+    booleanValue: boolean;
+  };
+  author: {
+    mapValue: {
+      fields: {
+        userUid: {
+          stringValue: string;
+        };
+        displayName: {
+          stringValue: string;
+        };
+      };
+    };
+  };
+  markdown: {
+    stringValue: string;
+  };
+  title: {
+    stringValue: string;
+  };
+}
+
 interface QuestionOrAnswerComment {
   author: Author;
   markdown: string;
