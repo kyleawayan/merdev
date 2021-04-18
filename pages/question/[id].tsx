@@ -48,19 +48,20 @@ export default function QuestionViewer({
     markdown.substring(0, 52) + `${markdown.length > 52 ? "..." : ""}` ?? "";
 
   const RichQuestionInfo = () => {
+    const imageUrl = `https://merdev-og-image-kyleawayan.vercel.app/${encodeURI(
+      title
+    )}`;
     return (
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
-        <meta
-          property="og:image"
-          content={`https://merdev-og-image-kyleawayan.vercel.app/${encodeURI(
-            title
-          )}`}
-        />
+        <meta property="og:image" content={imageUrl} />
         <meta property="og:description" content={description} />
         <meta property="og:site_name" content="merdev" />
+        <meta name="twitter:image:src" content={imageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
       </Head>
     );
   };
