@@ -7,6 +7,7 @@ import Comments from "../comments/Comments";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import Controls from "../Controls";
+import UserCard from "../UserCard";
 
 const db = firebase.firestore();
 
@@ -42,7 +43,7 @@ export default function Question({ data }: QuestionProps) {
       <Intro
         title={data.title}
         tags={data.tags}
-        askedDate={data.timestamp}
+        askedDate={data.timestamp.toDate()}
         viewed={data.counters.views}
       />
       <div className={styles.text}>
@@ -53,6 +54,14 @@ export default function Question({ data }: QuestionProps) {
         />
         <div className={styles.markdown}>
           <Text value={data.markdown} />
+          <div className={styles.userCard}>
+            <UserCard
+              displayName={data.author.displayName}
+              userUid={data.author.userUid}
+              datePosted={data.timestamp.toDate()}
+              action="asked"
+            />
+          </div>
           <div className={styles.controls}>
             <Controls
               postUserUid={data.author.userUid}

@@ -13,6 +13,7 @@ if (!firebase.apps.length) {
     authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
     projectId: process.env.NEXT_PUBLIC_PROJECTID,
     appId: process.env.NEXT_PUBLIC_APPID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
   });
 }
 

@@ -3,6 +3,7 @@ import styles from "../../styles/ask/QuestionMakerEditor.module.css";
 import { useAuth } from "../../utils/use-auth";
 import MarkdownEditor from "./MarkdownEditor";
 import firebase from "firebase/app";
+import "firebase/firestore";
 import { useRouter } from "next/router";
 import { questionDoc, answerDoc } from "../../utils/postDocs";
 

@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import Center from "../components/utils/CenterWholePage";
 import styles from "../styles/signup/signUpAndSignIn.module.css";
 import { useAuth } from "../utils/use-auth";
@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 export default function SignUp() {
   const auth = useAuth();
   const router = useRouter();
+  const [emailInUse, setEmailInUse] = useState(false);
 
   return (
     <div style={{ backgroundColor: "lightgrey" }}>
@@ -37,15 +38,28 @@ export default function SignUp() {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
+              setEmailInUse(false);
               auth
                 .signup(values.email, values.password, values.displayName)
                 .then(() => {
                   setSubmitting(false);
                   router.push("/");
                 })
-                .catch(() => {
-                  setSubmitting(false);
-                });
+                .catch(
+                  (error: {
+                    a: unknown;
+                    code: string;
+                    message: string;
+                    stack: string;
+                  }) => {
+                    setSubmitting(false);
+                    if ((error.code = "auth/email-already-in-use")) {
+                      setEmailInUse(true);
+                    } else {
+                      console.log(error);
+                    }
+                  }
+                );
             }}
           >
             {({
@@ -59,6 +73,11 @@ export default function SignUp() {
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit}>
+                {emailInUse && (
+                  <div className={styles.warning}>
+                    The email address is already in use by another account.
+                  </div>
+                )}
                 <div>
                   <label>
                     Display name

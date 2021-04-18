@@ -5,9 +5,9 @@ import Text from "../Text";
 import Comments from "../comments/Comments";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { useAuth } from "../../../utils/use-auth";
 import Solved from "./Solved";
 import Controls from "../Controls";
+import UserCard from "../UserCard";
 
 const db = firebase.firestore();
 
@@ -22,7 +22,6 @@ export default function SingleAnswer({
   questionId,
   questionUserUid,
 }: AnswerProps) {
-  const auth = useAuth();
   const [comments, setComments] = useState<Array<QuestionOrAnswerComment>>();
 
   useEffect(() => {
@@ -67,6 +66,14 @@ export default function SingleAnswer({
           </div>
           <div className={styles.markdown}>
             <Text value={data.markdown} />
+            <div className={styles.userCard}>
+              <UserCard
+                displayName={data.author.displayName}
+                userUid={data.author.userUid}
+                datePosted={data.timestamp.toDate()}
+                action="answered"
+              />
+            </div>
             <div className={styles.controls}>
               <Controls
                 postUserUid={data.author.userUid}

@@ -10,6 +10,7 @@
   margin-top: -1em;
   margin-left: 20px;
   max-width: 800px;
+  width: 100%;
 }
 
 .indented {
@@ -28,8 +29,12 @@
 }
 
 .controls {
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 20px;
+}
+
+.userCard {
+  margin-top: 30px;
 }
 
 @media only screen and (max-width: 780px) {

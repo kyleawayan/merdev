@@ -1,11 +1,12 @@
 import React from "react";
 import Tags from "../../homePage/recentQuestions/Tags";
 import styles from "../../../styles/questionViewer/question/Intro.module.css";
+import Moment from "react-moment";
 
 interface TitleProps {
   title: string;
   tags: Array<string>;
-  askedDate: FirestoreDate;
+  askedDate: Date;
   viewed: number;
 }
 
@@ -16,7 +17,7 @@ export default function Intro({ title, tags, askedDate, viewed }: TitleProps) {
       <Tags tags={tags} />
       <div className={styles.info}>
         <span className={styles.secondary}>Asked </span>
-        <span>{askedDate.toDate().toString()}</span>
+        <span>{<Moment date={askedDate} fromNow />}</span>
         {"  "}
         <span className={styles.secondary}>Viewed </span>
         <span>

@@ -17,7 +17,7 @@ export default function Question({ data }: QuestionProps) {
       </div>
       <Author
         displayName={data.author.displayName}
-        timestamp={data.timestamp}
+        timestamp={data.timestamp.toDate()}
       />
     </div>
   );

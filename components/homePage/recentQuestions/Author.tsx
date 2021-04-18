@@ -4,17 +4,14 @@ import Moment from "react-moment";
 
 interface AuthorProps {
   displayName: string;
-  timestamp: FirestoreDate;
+  timestamp: Date;
 }
 
 export default function Author({ displayName, timestamp }: AuthorProps) {
-  const date = timestamp.toDate();
-
   return (
     <div className={styles.authorContainer}>
       <div className={styles.author}>
-        asked {<Moment date={date} format="m" durationFromNow />} minutes ago by{" "}
-        {displayName}
+        asked {<Moment date={timestamp} fromNow />} by {displayName}
       </div>
     </div>
   );

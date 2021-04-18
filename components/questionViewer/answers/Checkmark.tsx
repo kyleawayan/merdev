@@ -18,7 +18,7 @@ export default function Checkmark({ width, height, filled }: CheckmarkProps) {
     >
       {!filled && (
         <path
-          fill="#000000"
+          fill="var(--arrow-unhighlighted)"
           d="M6.21 14.339l-6.217-6.119 3.084-3.035 3.133 3.083 6.713-6.607 3.084 3.035-9.797 9.643zM1.686 8.22l4.524 4.453 8.104-7.976-1.391-1.369-6.713 6.607-3.133-3.083-1.391 1.369z"
         ></path>
       )}

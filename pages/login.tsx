@@ -32,6 +32,7 @@ export default function SignUp() {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
+              setFailed(false);
               auth
                 .signin(values.email, values.password)
                 .then(() => {
@@ -56,7 +57,7 @@ export default function SignUp() {
             }) => (
               <form onSubmit={handleSubmit}>
                 {failed && (
-                  <span className={styles.warning}>Login was not found.</span>
+                  <div className={styles.warning}>Login was not found.</div>
                 )}
                 <div>
                   <label>
