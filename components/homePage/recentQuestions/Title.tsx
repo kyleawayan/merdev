@@ -16,7 +16,7 @@ export default function Title({ title, tags, id }: TitleProps) {
         fontWeight: 600,
       }}
     >
-      <Link href={`/question/${id}`} prefetch={false}>
+      <Link href={`/question/${id}`} prefetch={false} shallow>
         {title}
       </Link>
       <Tags tags={tags} />
