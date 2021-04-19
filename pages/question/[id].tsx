@@ -105,7 +105,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const datePosted = questionData?.timestamp.timestampValue ?? "";
   const tags =
     questionData?.tags.arrayValue.values.map((tag) => tag.stringValue) ?? [];
-  const votes = questionData?.counters.mapValue.fields.votes.integerValue;
+  const votes = questionData?.counters.mapValue.fields.votes.integerValue ?? 0;
 
   return {
     props: {

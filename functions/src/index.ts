@@ -15,6 +15,11 @@ import {
   updateAnswerCounterOnDelete,
 } from "./answer/answerCounter";
 import { markSolved } from "./answer/markSolved";
+import {
+  addAnswerCommentToInbox,
+  addAnswerReplyToInbox,
+  addQuestionCommentReplyToInbox,
+} from "./inbox/addReplyToInbox";
 
 exports.updateQuestionVoteCounter = updateQuestionVoteCounter;
 exports.updateAnswerVoteCounter = updateAnswerVoteCounter;
@@ -23,3 +28,6 @@ exports.updateAnswerCommentVoteCounter = updateAnswerCommentVoteCounter;
 exports.updateAnswerCounterOnUpdate = updateAnswerCounterOnCreate;
 exports.updateAnswerCounterOnDelete = updateAnswerCounterOnDelete;
 exports.markSolved = markSolved;
+exports.addQuestionCommentReplyToInbox = addQuestionCommentReplyToInbox;
+exports.addAnswerReplyToInbox = addAnswerReplyToInbox;
+exports.addAnswerCommentToInbox = addAnswerCommentToInbox;
