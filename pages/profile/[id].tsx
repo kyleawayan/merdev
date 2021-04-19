@@ -56,7 +56,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!process.env.NEXT_PUBLIC_FIREDEV) {
     // change region if needed, to do: use a environemnt variable for region
     res = await fetch(
-      `https://us-central1-${process.env.NEXT_PUBLIC_PROJECTID}.cloudfunctions.net/us-central1/userUidToDisplayName?userUid=${context.query.id}`
+      `https://us-central1-${process.env.NEXT_PUBLIC_PROJECTID}.cloudfunctions.net/userUidToDisplayName?userUid=${context.query.id}`
     );
   } else {
     res = await fetch(
