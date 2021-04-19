@@ -8,8 +8,6 @@ import SearchBarMobile from "./search/SearchBarMobile";
 import debounce from "debounce";
 import ToggleButton from "../themeToggle/ToggleButton";
 import Link from "next/link";
-import Pfp from "./Pfp";
-import SignOutIcon from "./SignOutIcon";
 import Inbox from "./inbox/Inbox";
 
 export default function Menu() {
@@ -51,7 +49,11 @@ export default function Menu() {
         {!auth.user && <SignInSignUp />}
         {auth.user && (
           <div className={styles.usernameAndSignOut}>
-            <span className={styles.username}>{auth.user.displayName}</span>
+            <span className={styles.username}>
+              <Link href={`/profile/${auth.user.uid}`}>
+                <a>{auth.user.displayName}</a>
+              </Link>
+            </span>
             {/* <Pfp userUid={auth.user.uid} /> */}
             <Inbox />
           </div>

@@ -4,6 +4,7 @@ import Moment from "react-moment";
 import firebase from "firebase/app";
 import "firebase/storage";
 import Image from "next/image";
+import Link from "next/link";
 
 const storage = firebase.storage();
 
@@ -41,7 +42,11 @@ export default function UserCard({
           {pfpUrl && <Image src={pfpUrl} layout="fill" objectFit="cover" />}
         </div>
         <div className={styles.info}>
-          <div className={styles.displayName}>{displayName}</div>
+          <div className={styles.displayName}>
+            <Link href={`/profile/${userUid}`}>
+              <a>{displayName}</a>
+            </Link>
+          </div>
           <div className={styles.datePosted}>
             {action} {<Moment date={datePosted} fromNow />}
           </div>

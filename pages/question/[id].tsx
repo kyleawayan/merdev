@@ -91,6 +91,7 @@ export default function QuestionViewer({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  // does not work with emulator
   const res = await fetch(
     `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_PROJECTID}/databases/(default)/documents/questions/${context.query.id}`
   );

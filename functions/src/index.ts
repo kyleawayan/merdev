@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-spacing */
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
@@ -21,6 +20,7 @@ import {
   addQuestionCommentReplyToInbox,
 } from "./inbox/addReplyToInbox";
 import { clearInbox } from "./inbox/clearInbox";
+import { userUidToDisplayName } from "./profile/userUidToDisplayName";
 
 exports.updateQuestionVoteCounter = updateQuestionVoteCounter;
 exports.updateAnswerVoteCounter = updateAnswerVoteCounter;
@@ -33,3 +33,4 @@ exports.addQuestionCommentReplyToInbox = addQuestionCommentReplyToInbox;
 exports.addAnswerReplyToInbox = addAnswerReplyToInbox;
 exports.addAnswerCommentToInbox = addAnswerCommentToInbox;
 exports.clearInbox = clearInbox;
+exports.userUidToDisplayName = userUidToDisplayName;

@@ -1,0 +1,35 @@
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 50.75px);
+}
+
+.displayName {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.pfpContainer {
+  position: relative;
+  overflow: hidden;
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  border-radius: 50%;
+}
+
+.pfp {
+  position: absolute;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+}
+
+.info {
+  margin-left: 20px;
+}
+
+.signOut {
+  margin-top: 10px;
+}

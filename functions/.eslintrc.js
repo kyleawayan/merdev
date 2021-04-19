@@ -27,5 +27,6 @@ module.exports = {
     "max-len": "off",
     "require-jsdoc": "off",
     "quote-props": 1,
+    "object-curly-spacing": "off",
   },
 };
