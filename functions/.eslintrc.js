@@ -26,5 +26,6 @@ module.exports = {
     indent: "off",
     "max-len": "off",
     "require-jsdoc": "off",
+    "quote-props": 1,
   },
 };
