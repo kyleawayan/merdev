@@ -25,5 +25,6 @@ module.exports = {
     quotes: ["error", "double"],
     indent: "off",
     "max-len": "off",
+    "require-jsdoc": "off",
   },
 };

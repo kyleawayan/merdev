@@ -20,6 +20,7 @@ import {
   addAnswerReplyToInbox,
   addQuestionCommentReplyToInbox,
 } from "./inbox/addReplyToInbox";
+import { clearInbox } from "./inbox/clearInbox";
 
 exports.updateQuestionVoteCounter = updateQuestionVoteCounter;
 exports.updateAnswerVoteCounter = updateAnswerVoteCounter;
@@ -31,3 +32,4 @@ exports.markSolved = markSolved;
 exports.addQuestionCommentReplyToInbox = addQuestionCommentReplyToInbox;
 exports.addAnswerReplyToInbox = addAnswerReplyToInbox;
 exports.addAnswerCommentToInbox = addAnswerCommentToInbox;
+exports.clearInbox = clearInbox;

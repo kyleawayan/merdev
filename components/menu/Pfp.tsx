@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/menu/Pfp.module.css";
+import firebase from "firebase/app";
+import "firebase/storage";
+
+const storage = firebase.storage();
 
 interface PfpProps {
-  name: string;
-  imageUrl: string;
+  userUid: string;
 }
 
-export default function Pfp({ name, imageUrl }: PfpProps) {
-  const [hasImage, setHasImage] = useState(true);
+export default function Pfp({ userUid }: PfpProps) {
+  const [pfpUrl, setPfpUrl] = useState("");
+
+  useEffect(() => {
+    storage
+      .ref(`avatars/${userUid}.jpg`)
+      .getDownloadURL()
+      .then((url) => {
+        setPfpUrl(url);
+      })
+      .catch(console.warn);
+  }, []);
 
   return (
-    <div className={styles.pfp}>
-      {hasImage && <img src={imageUrl} onError={() => console.log("no")} />}
-      {!hasImage && <div>{name}</div>}
-    </div>
+    <span className={styles.pfp}>
+      <div className={styles.pfpContainer}>
+        {pfpUrl && <Image src={pfpUrl} layout="fill" objectFit="cover" />}
+      </div>
+    </span>
   );
 }

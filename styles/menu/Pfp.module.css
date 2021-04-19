@@ -1,12 +1,15 @@
-.pfp {
-  position: absolute;
-  right: 5px;
-  top: 2px;
-  margin: 8px;
+.pfpContainer {
+  position: relative;
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+  background-color: #bbb;
+  border-radius: 50%;
 }
 
-.pfp img {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+.pfp {
+  position: absolute;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
 }

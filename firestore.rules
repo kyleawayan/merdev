@@ -41,5 +41,10 @@ service cloud.firestore {
       allow write: if resource.data.author.userUid == request.auth.uid;
     }
 
+    match /users/{userUid}/inbox/{document=**} {
+      allow read: if userUid == request.auth.uid;
+      allow update: if userUid == request.auth.uid
+    }
+
   }
 }

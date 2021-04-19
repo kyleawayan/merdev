@@ -8,6 +8,9 @@ import SearchBarMobile from "./search/SearchBarMobile";
 import debounce from "debounce";
 import ToggleButton from "../themeToggle/ToggleButton";
 import Link from "next/link";
+import Pfp from "./Pfp";
+import SignOutIcon from "./SignOutIcon";
+import Inbox from "./inbox/Inbox";
 
 export default function Menu() {
   const auth = useAuth();
@@ -49,7 +52,8 @@ export default function Menu() {
         {auth.user && (
           <div className={styles.usernameAndSignOut}>
             <span className={styles.username}>{auth.user.displayName}</span>
-            <button onClick={auth.signout}>Sign out</button>
+            {/* <Pfp userUid={auth.user.uid} /> */}
+            <Inbox />
           </div>
         )}
       </div>

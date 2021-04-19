@@ -14,6 +14,7 @@ export const addQuestionCommentReplyToInbox = functions.firestore
     ).data()) as Question;
 
     const questionAuthorUid = questionDoc.author.userUid;
+    const questionTitle = questionDoc.title;
 
     return db
       .collection("users")
@@ -24,6 +25,7 @@ export const addQuestionCommentReplyToInbox = functions.firestore
         preview:
           snapData.markdown.substring(0, 97) +
             `${snapData.markdown.length > 97 ? "..." : ""}` ?? "",
+        questionTitle: questionTitle,
         timestamp: snapData.timestamp,
         questionId: questionId,
         commentId: commentId,
@@ -38,11 +40,12 @@ export const addAnswerReplyToInbox = functions.firestore
     const answerId = context.params.answerId;
     const snapData = snap.data() as Answer;
 
-    const answerDoc = (await (
+    const questionDoc = (await (
       await db.collection("questions").doc(questionId).get()
     ).data()) as Question;
 
-    const questionAuthorUid = answerDoc.author.userUid;
+    const questionAuthorUid = questionDoc.author.userUid;
+    const questionTitle = questionDoc.title;
 
     return db
       .collection("users")
@@ -53,6 +56,7 @@ export const addAnswerReplyToInbox = functions.firestore
         preview:
           snapData.markdown.substring(0, 97) +
             `${snapData.markdown.length > 97 ? "..." : ""}` ?? "",
+        questionTitle: questionTitle,
         timestamp: snapData.timestamp,
         questionId: questionId,
         answerId: answerId,
@@ -75,6 +79,7 @@ export const addAnswerCommentToInbox = functions.firestore
     ).data()) as Question;
 
     const questionAuthorUid = questionDoc.author.userUid;
+    const questionTitle = questionDoc.title;
 
     return db
       .collection("users")
@@ -85,6 +90,7 @@ export const addAnswerCommentToInbox = functions.firestore
         preview:
           snapData.markdown.substring(0, 97) +
             `${snapData.markdown.length > 97 ? "..." : ""}` ?? "",
+        questionTitle: questionTitle,
         timestamp: snapData.timestamp,
         questionId: questionId,
         answerId: answerId,

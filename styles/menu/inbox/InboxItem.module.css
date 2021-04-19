@@ -1,0 +1,29 @@
+.inboxItem {
+  border-bottom: 1px solid var(--grey1);
+  padding: 10px;
+}
+
+.inboxItem div {
+  margin-bottom: 5px;
+}
+
+.title {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.timestamp {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.type {
+  position: relative;
+  font-size: 12px;
+  color: var(--grey2);
+}
+
+.preview {
+  font-size: 14px;
+}

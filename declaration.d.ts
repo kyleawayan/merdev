@@ -132,4 +132,16 @@ interface mathRendererProps {
   value: string;
 }
 
+interface InboxItem {
+  id: string;
+  type: "comment" | "answer";
+  questionTitle: string;
+  preview: string;
+  timestamp: FirestoreDate;
+  questionId: string;
+  commentId?: string;
+  answerId?: string;
+  read: Boolean;
+}
+
 declare module "react-katex";
