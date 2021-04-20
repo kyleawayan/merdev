@@ -36,7 +36,7 @@ export default function Question({ data }: QuestionProps) {
         );
       });
     return () => unsubscribe();
-  }, []);
+  }, [data.id]);
 
   return (
     <div className={styles.question}>

@@ -26,7 +26,7 @@ export default function Profile({ displayName }: ProfilePageProps) {
         setPfpUrl(url);
       })
       .catch(console.warn);
-  }, []);
+  }, [router.query.id]);
 
   const signOut = () => {
     auth.signout();

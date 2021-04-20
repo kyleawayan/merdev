@@ -39,7 +39,7 @@ export default function Answers({ questionId, questionUserUid }: AnswersProps) {
         );
       });
     return () => unsubscribe();
-  }, []);
+  }, [questionId]);
 
   if (!data) {
     return <div></div>;
