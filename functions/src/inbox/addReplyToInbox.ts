@@ -78,12 +78,21 @@ export const addAnswerCommentToInbox = functions.firestore
       await db.collection("questions").doc(questionId).get()
     ).data()) as Question;
 
-    const questionAuthorUid = questionDoc.author.userUid;
+    const answerDoc = (await (
+      await db
+        .collection("questions")
+        .doc(questionId)
+        .collection("answers")
+        .doc(answerId)
+        .get()
+    ).data()) as Answer;
+
+    const answerAuthorUid = answerDoc.author.userUid;
     const questionTitle = questionDoc.title;
 
     return db
       .collection("users")
-      .doc(questionAuthorUid)
+      .doc(answerAuthorUid)
       .collection("inbox")
       .add({
         type: "comment",
