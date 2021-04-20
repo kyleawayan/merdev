@@ -6,6 +6,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import { useRouter } from "next/router";
 import { questionDoc, answerDoc } from "../../utils/postDocs";
+import TagsField from "./TagsField";
 
 const db = firebase.firestore();
 
@@ -29,6 +30,7 @@ export default function QuestionMakerEditor({
   const router = useRouter();
   const [title, setTitle] = useState(defaultTitle ?? "");
   const [value, setValue] = useState(defaultValue ?? "");
+  const [tagField, setTagField] = useState("");
 
   const titleChange = (event: {
     target: { value: React.SetStateAction<string> }; // this type isn't right, change it later
@@ -41,7 +43,7 @@ export default function QuestionMakerEditor({
       db.collection("questions")
         .add({
           title: title,
-          tags: ["tag", "another tag", "another tag"],
+          tags: tagField.split(","),
           author: {
             userUid: auth.user.uid,
             displayName: auth.user.displayName,
@@ -74,6 +76,10 @@ export default function QuestionMakerEditor({
     }
   };
 
+  const onTagFieldChange = (event: any, { newValue }: { newValue: string }) => {
+    setTagField(newValue);
+  };
+
   return (
     <div
       className={styles.questionMakerEditor}
@@ -88,6 +94,9 @@ export default function QuestionMakerEditor({
           />
         </div>
       )}
+      <div>
+        <TagsField value={tagField} onChange={onTagFieldChange} />
+      </div>
       <div className={styles.editor}>
         <MarkdownEditor value={value} onChange={setValue} />
       </div>

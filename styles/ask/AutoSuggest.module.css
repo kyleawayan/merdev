@@ -1,0 +1,8 @@
+.suggestions {
+  margin: 0;
+  background-color: red;
+}
+
+.suggestions ul {
+  list-style-type: none !important;
+}
