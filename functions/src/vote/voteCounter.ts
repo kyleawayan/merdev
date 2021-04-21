@@ -55,7 +55,6 @@ export const updateQuestionCommentVoteCounter = functions.firestore
     const commentId = context.params.commentId;
     const beforeState = change.before.data()?.state ?? (0 as Votes);
     const afterState = change.after.data()?.state ?? (0 as Votes);
-    console.log(beforeState, afterState);
     const currentQuestionCommentDoc = (await (
       await questionDoc(questionId)
         .collection("questionComments")
@@ -81,7 +80,6 @@ export const updateAnswerCommentVoteCounter = functions.firestore
     const commentId = context.params.commentId;
     const beforeState = change.before.data()?.state ?? (0 as Votes);
     const afterState = change.after.data()?.state ?? (0 as Votes);
-    console.log(beforeState, afterState);
     const currentAnswerCommentDoc = (await (
       await questionDoc(questionId)
         .collection("answers")

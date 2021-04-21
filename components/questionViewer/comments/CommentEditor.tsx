@@ -17,7 +17,6 @@ export default function CommentEditor({
       minEditorHeight={100}
       maxEditorHeight={100}
       selectedTab={"write"}
-      onTabChange={() => console.log()}
     />
   );
 }

@@ -56,7 +56,7 @@ export default function SignUp() {
                     if ((error.code = "auth/email-already-in-use")) {
                       setEmailInUse(true);
                     } else {
-                      console.log(error);
+                      console.error(error);
                     }
                   }
                 );

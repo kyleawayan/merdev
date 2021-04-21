@@ -39,7 +39,6 @@ export default function MarkdownEditor({
         minEditorHeight={378}
         maxEditorHeight={378}
         selectedTab={"write"}
-        onTabChange={() => console.log()}
       />
       <ReactMarkdown plugins={[math]} renderers={renderers}>
         {value}
