@@ -1,0 +1,11 @@
+.rulesAndStuff {
+  margin-left: 20px;
+  border: 1px var(--grey1) solid;
+  padding: 15px;
+  width: 30%;
+  height: fit-content;
+}
+
+.rulesAndStuff a {
+  text-decoration: underline;
+}

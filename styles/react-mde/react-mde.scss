@@ -1,7 +1,7 @@
 @import "variables.scss";
 
 .react-mde {
-  border: 1px solid var(--grey2);
+  border: 1px solid $mde-border-color;
   border-radius: $mde-border-radius;
 
   * {

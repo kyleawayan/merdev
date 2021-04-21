@@ -88,7 +88,7 @@ export default function QuestionMakerEditor({
       {showTitle && (
         <div className={styles.questionTitleInput}>
           <input
-            placeholder="enter question title here"
+            placeholder="Enter question title here"
             value={title}
             onChange={titleChange}
           />

@@ -119,7 +119,7 @@ button {
 input {
   font-family: "Inter";
   background: transparent;
-  border: 1px solid var(--grey2);
+  border: 1px solid var(--grey1);
   color: inherit;
   padding: 8px;
 }
