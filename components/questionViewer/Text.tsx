@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import math from "remark-math";
 import { InlineMath, BlockMath } from "react-katex";
+import styles from "../../styles/questionViewer/Text.module.css";
 
 const renderers = {
   code: ({ language, value }: codeRendererProps) => {
@@ -12,6 +13,7 @@ const renderers = {
         style={materialDark}
         language={language ?? ""} // if language is undefined, just make it a blank string
         children={value ?? ""} // if value is undefined, just make it a blank string
+        codeTagProps={{ className: styles.codeBlock }}
       />
     );
   },
@@ -27,7 +29,7 @@ interface MarkdownEditorProps {
 
 export default function Text({ value }: MarkdownEditorProps) {
   return (
-    <div>
+    <div className={styles.text}>
       <ReactMarkdown plugins={[math]} renderers={renderers}>
         {value}
       </ReactMarkdown>

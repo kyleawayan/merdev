@@ -134,3 +134,9 @@ button:hover {
   background-color: var(--button-hover);
   transition: 0.05s;
 }
+
+code {
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+    sans-serif;
+}
