@@ -17,6 +17,10 @@ export default function CommentEditor({
       minEditorHeight={100}
       maxEditorHeight={100}
       selectedTab={"write"}
+      toolbarCommands={[
+        ["bold", "italic"],
+        ["link", "code"],
+      ]}
     />
   );
 }

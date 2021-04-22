@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import math from "remark-math";
 import { InlineMath, BlockMath } from "react-katex";
+import { getDefaultToolbarCommands } from "react-mde";
 
 const renderers = {
   code: ({ language, value }: codeRendererProps) => {
@@ -39,6 +40,11 @@ export default function MarkdownEditor({
         minEditorHeight={378}
         maxEditorHeight={378}
         selectedTab={"write"}
+        toolbarCommands={[
+          ["header", "bold", "italic"],
+          ["link", "quote", "code", "image"],
+          ["unordered-list", "ordered-list"],
+        ]}
       />
       <ReactMarkdown plugins={[math]} renderers={renderers}>
         {value}

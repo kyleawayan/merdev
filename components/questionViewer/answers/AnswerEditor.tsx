@@ -36,6 +36,11 @@ export default function AnswerEditor({ value, onChange }: AnswerEditorProps) {
         minEditorHeight={150}
         maxEditorHeight={150}
         selectedTab={"write"}
+        toolbarCommands={[
+          ["header", "bold", "italic"],
+          ["link", "quote", "code", "image"],
+          ["unordered-list", "ordered-list"],
+        ]}
       />
       <ReactMarkdown plugins={[math]} renderers={renderers}>
         {value}
