@@ -30,6 +30,7 @@ export default function YourAnswer({ questionId, submitted }: YourAnswerProps) {
         counters: {
           votes: 0,
         },
+        marked: false,
       })
       .then(() => {
         if (submitted) {

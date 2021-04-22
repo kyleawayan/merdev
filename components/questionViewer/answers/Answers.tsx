@@ -24,7 +24,8 @@ export default function Answers({ questionId, questionUserUid }: AnswersProps) {
       .collection("questions")
       .doc(questionId)
       .collection("answers")
-      .orderBy("timestamp", "desc")
+      .orderBy("marked", "desc")
+      .orderBy("counters.votes", "desc")
       .onSnapshot((snapshot) => {
         if (snapshot.docs[0]) {
           setHasAnswers(true);
