@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import SingleAnswer from "./SingleAnswer";
+import { SingleAnswer } from "./SingleAnswer";
 import YourAnswer from "./YourAnswer";
 import AddAnswer from "./AddAnswer";
+import FlipMove from "react-flip-move";
 
 const db = firebase.firestore();
 
@@ -62,14 +63,16 @@ export default function Answers({ questionId, questionUserUid }: AnswersProps) {
         />
       )}
       <div>
-        {data.map((answer) => (
-          <SingleAnswer
-            data={answer}
-            questionId={questionId}
-            questionUserUid={questionUserUid}
-            key={answer.id}
-          />
-        ))}
+        <FlipMove>
+          {data.map((answer) => (
+            <SingleAnswer
+              data={answer}
+              questionId={questionId}
+              questionUserUid={questionUserUid}
+              key={answer.id}
+            />
+          ))}
+        </FlipMove>
       </div>
       {hasAnswers && <AddAnswer questionId={questionId} />}
     </div>

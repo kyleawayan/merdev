@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import Upvoter from "../upvoter/UpvoterQuestionAnswer";
 import styles from "../../../styles/questionViewer/answers/SingleAnswer.module.css";
 import Text from "../Text";
@@ -17,12 +17,11 @@ interface AnswerProps {
   questionUserUid: string;
 }
 
-export default function SingleAnswer({
-  data,
-  questionId,
-  questionUserUid,
-}: AnswerProps) {
+export const SingleAnswer = forwardRef((props: AnswerProps, ref) => {
   const [comments, setComments] = useState<Array<QuestionOrAnswerComment>>();
+  const data = props.data;
+  const questionId = props.questionId;
+  const questionUserUid = props.questionUserUid;
 
   useEffect(() => {
     // get answer comments
@@ -47,7 +46,8 @@ export default function SingleAnswer({
   }, []);
 
   return (
-    <div>
+    // @ts-ignore
+    <div ref={ref}>
       <div className={styles.question}>
         <div className={styles.text}>
           <div>
@@ -98,4 +98,4 @@ export default function SingleAnswer({
       <div className={styles.bottomLine} />
     </div>
   );
-}
+});
