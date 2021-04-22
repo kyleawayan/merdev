@@ -36,6 +36,7 @@ export default function Edit() {
         questionId={questionId}
         answerId={answerId}
         showTitle={"title" in data}
+        tags={"title" in data ? data.tags : []}
       />
     </div>
   );

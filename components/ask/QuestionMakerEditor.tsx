@@ -17,6 +17,7 @@ interface QuestionMakerProps {
   questionId?: string;
   answerId?: string;
   showTitle?: boolean;
+  tags?: Array<string>;
 }
 
 export default function QuestionMakerEditor({
@@ -25,12 +26,13 @@ export default function QuestionMakerEditor({
   questionId,
   answerId,
   showTitle = true,
+  tags,
 }: QuestionMakerProps) {
   const auth = useAuth();
   const router = useRouter();
   const [title, setTitle] = useState(defaultTitle ?? "");
   const [value, setValue] = useState(defaultValue ?? "");
-  const [tagField, setTagField] = useState("");
+  const [tagField, setTagField] = useState(tags?.join(",") ?? "");
 
   const titleChange = (event: {
     target: { value: React.SetStateAction<string> }; // this type isn't right, change it later
@@ -95,7 +97,9 @@ export default function QuestionMakerEditor({
         </div>
       )}
       <div>
-        <TagsField value={tagField} onChange={onTagFieldChange} />
+        {showTitle && (
+          <TagsField value={tagField} onChange={onTagFieldChange} />
+        )}
       </div>
       <div className={styles.editor}>
         <MarkdownEditor value={value} onChange={setValue} />
