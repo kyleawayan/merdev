@@ -1,15 +1,18 @@
 .footerParent {
   display: flex;
-  padding: 40px;
   font-size: 12px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     0deg,
     rgba(0, 0, 0, 0.1) 0%,
     rgba(0, 0, 0, 0) 100%
-  );
+  ); */
 }
 
 .container {
+  max-width: var(--merdev-max-width);
+  margin: auto;
+  padding: 14px;
+  padding-bottom: 40px;
   display: inherit;
   width: 100%;
   max-width: var(--merdev-max-width);

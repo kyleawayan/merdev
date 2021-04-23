@@ -1,12 +1,8 @@
 import React from "react";
 import styles from "../../styles/footer/Footer.module.css";
 import Logo from "../menu/Logo";
-import useDarkMode from "use-dark-mode";
-import Link from "next/link";
 
 export default function Footer() {
-  const darkMode = useDarkMode();
-
   return (
     <div className={styles.footerParent}>
       <div className={styles.container}>
