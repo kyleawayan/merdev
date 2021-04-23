@@ -55,12 +55,12 @@ body.dark-mode {
   font-family: "Inter";
   background-color: #1d1d1d;
   transition: background-color 0.3s ease;
-  color: hsla(0, 0%, 100%, 0.9);
+  color: rgb(231, 232, 235);
 }
 
 .light-mode {
   --merdev-max-width: 1400px;
-  --white: rgba(255, 255, 255, 0.9);
+  --white: rgb(231, 232, 235);
   --black: #37352f;
   --button-color: var(--black);
   --button-hover: #535047;
@@ -79,7 +79,7 @@ body.dark-mode {
 
 .dark-mode {
   --merdev-max-width: 1400px;
-  --white: rgba(255, 255, 255, 0.9);
+  --white: rgb(231, 232, 235);
   --black: #37352f;
   --button-color: #515151;
   --button-hover: #6b6b6b;
@@ -107,7 +107,7 @@ a {
 
 button {
   background-color: var(--button-color);
-  color: var(--white);
+  color: white;
   outline: none;
   border: none;
   cursor: pointer;

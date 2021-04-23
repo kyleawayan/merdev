@@ -9,12 +9,12 @@ import { useEffect } from "react";
 import Image from "next/image";
 
 export default function HomePageHeader() {
-    useEffect(() => {
-      Aos.init({ duration: 1000 });
-    }, []);
-    return (
-      <div>
-        <div className = "bg">
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+  return (
+    <div>
+      {/* <div className="bg">
         <Image
           src="/se.jpeg"
           alt="me"
@@ -22,18 +22,19 @@ export default function HomePageHeader() {
           objectFit="cover"
           className={styles.background}
         />
-        </div>
-        <div className={styles.container}>
+      </div> */}
+      <div className={styles.container}>
+        <div className={styles.introText}>
           <HomeLogo />
           <p className={styles.homepara}>
             One stop hub for all your coding troubles and needs. Exclusive to UC
-            Merced computer science students <br /> developed by UC Merced
-            computer science students.
+            Merced computer science students, developed by UC Merced computer
+            science students.
           </p>
           <Link href="/signup">
             <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className={styles.homebtn}
             >
               Sign Up Now
@@ -42,14 +43,14 @@ export default function HomePageHeader() {
           <p className={styles.homeparalogin}>
             Already have an account? Log in <Link href="/login">here!</Link>
           </p>
-          <img
-            data-aos="fade-up"
-            className={styles.homeimg}
-            src={"uisample.jpg"}
-          />
-          <br />
         </div>
+        <img
+          data-aos="fade-up"
+          className={styles.homeimg}
+          src={"uisample.jpg"}
+        />
+        <br />
       </div>
-    );
-  }
-  
+    </div>
+  );
+}
