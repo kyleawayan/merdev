@@ -49,7 +49,7 @@ export default function LoggedInHomePage() {
               <strong>Welcome to merdev alpha!</strong>
               <p>
                 I am a sidebar. I will show useful info like upcoming
-                assignments soon.
+                assignments here soon.
               </p>
             </div>
           </div>

@@ -1,7 +1,8 @@
 .rulesAndStuff {
   margin-left: 20px;
   border: 1px var(--grey1) solid;
-  padding: 15px;
+  padding-left: 16px;
+  padding-right: 16px;
   width: 30%;
   height: fit-content;
 }
