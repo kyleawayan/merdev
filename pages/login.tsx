@@ -14,7 +14,7 @@ export default function SignUp() {
     <div style={{ backgroundColor: "var(--secondary-bg)" }}>
       <Center>
         <div className={styles.signUpContainer}>
-          <h1>Join the [community name] community</h1>
+          <h1>Sign in to the UC Merced CSE community</h1>
           <Formik
             initialValues={{ displayName: "", email: "", password: "" }}
             validate={(values) => {

@@ -118,7 +118,7 @@ button {
 
 input {
   font-family: "Inter";
-  background: transparent;
+  background: var(--search-bar-bg);
   border: 1px solid var(--grey1);
   color: inherit;
   padding: 8px;

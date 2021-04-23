@@ -11,10 +11,10 @@ export default function SignUp() {
   const [emailInUse, setEmailInUse] = useState(false);
 
   return (
-    <div style={{ backgroundColor: "lightgrey" }}>
+    <div style={{ backgroundColor: "var(--secondary-bg)" }}>
       <Center>
         <div className={styles.signUpContainer}>
-          <h1>Join the [community name] community</h1>
+          <h1>Join the UC Merced CSE community</h1>
           <Formik
             initialValues={{ displayName: "", email: "", password: "" }}
             validate={(values) => {
