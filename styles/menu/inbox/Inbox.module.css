@@ -42,6 +42,6 @@
 @media only screen and (max-width: 780px) {
   .inboxWindow {
     width: 100vw;
-    right: -29px;
+    right: -12px;
   }
 }

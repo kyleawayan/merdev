@@ -35,16 +35,16 @@
 
 .sidebar {
   width: 20%;
+  margin-left: 20px;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: var(--grey3);
+  height: max-content;
 }
 
 .line {
   border-bottom: 1px var(--grey1) solid;
-}
-
-.sidebar {
-  margin-left: 20px;
-  padding: 15px;
-  background-color: var(--grey3);
 }
 
 @media only screen and (max-width: 780px) {

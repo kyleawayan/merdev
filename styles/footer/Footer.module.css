@@ -9,6 +9,13 @@
   );
 }
 
+.container {
+  display: inherit;
+  width: 100%;
+  max-width: var(--merdev-max-width);
+  margin: auto;
+}
+
 .footerChild {
   margin-right: 40px;
 }
@@ -69,9 +76,6 @@
 }
 
 @media only screen and (max-width: 780px) {
-  .footerParent {
-    padding: 20px;
-  }
   .footerChild {
     margin-right: 20px;
   }
@@ -79,7 +83,6 @@
 
 @media only screen and (max-width: 360px) {
   .footerParent {
-    padding: 20px;
     display: block;
   }
   .footerChild {
