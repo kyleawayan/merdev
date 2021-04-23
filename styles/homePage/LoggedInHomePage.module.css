@@ -51,4 +51,7 @@
   .recentQuestions {
     width: 100%;
   }
+  .header h1 {
+    font-size: 24px;
+  }
 }
