@@ -19,7 +19,7 @@ export default function Counters({
         isHighlighted={answersHighlighted}
         label="answers"
       />
-      <IndividualCounter count={counters.views} label="views" />
+      {/* <IndividualCounter count={counters.views} label="views" /> */}
     </div>
   );
 }

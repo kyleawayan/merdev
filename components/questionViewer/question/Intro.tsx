@@ -18,11 +18,11 @@ export default function Intro({ title, tags, askedDate, viewed }: TitleProps) {
       <div className={styles.info}>
         <span className={styles.secondary}>Asked </span>
         <span>{<Moment date={askedDate} fromNow />}</span>
-        {"  "}
+        {/* {"  "}
         <span className={styles.secondary}>Viewed </span>
         <span>
           {viewed} {viewed > 1 || viewed == 0 ? "times" : "time"}
-        </span>
+        </span> */}
       </div>
     </div>
   );
