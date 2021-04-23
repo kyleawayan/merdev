@@ -122,6 +122,7 @@ input {
   border: 1px solid var(--grey1);
   color: inherit;
   padding: 8px;
+  font-size: 16px;
 }
 
 .globalContainer {
