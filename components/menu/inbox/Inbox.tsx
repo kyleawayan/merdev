@@ -15,6 +15,7 @@ export default function Inbox() {
   const auth = useAuth();
   const [data, setData] = useState<Array<InboxItem>>([]);
   const [inboxOpen, setInboxOpen] = useState(false);
+  const [clearingInbox, setClearingInbox] = useState(false);
 
   // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
   function useOutsideAlerter(ref: React.MutableRefObject<null>) {
@@ -65,7 +66,15 @@ export default function Inbox() {
       "Are you sure you want to clear your inbox?"
     );
     if (confirm) {
-      clearInbox();
+      setClearingInbox(true);
+      clearInbox()
+        .then(() => {
+          setClearingInbox(false);
+        })
+        .catch((error) => {
+          setClearingInbox(false);
+          console.error(error);
+        });
     }
   };
 
@@ -89,7 +98,7 @@ export default function Inbox() {
             <div>
               <h4 className={styles.inboxHeader}>Inbox</h4>
               <div className={styles.clear} onClick={clearInboxCollection}>
-                Clear
+                {!clearingInbox ? "Clear" : "Clearing..."}
               </div>
             </div>
             {data.map((item: InboxItem) => (
