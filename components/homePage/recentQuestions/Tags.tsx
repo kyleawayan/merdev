@@ -8,11 +8,9 @@ interface TagsProps {
 export default function Tags({ tags }: TagsProps) {
   return (
     <div>
-      {tags.map(
-        (tag: string) => (
-          <IndividualTag tag={tag} />
-        ) // add keys
-      )}
+      {tags.map((tag: string, index) => (
+        <IndividualTag tag={tag} key={index} />
+      ))}
     </div>
   );
 }

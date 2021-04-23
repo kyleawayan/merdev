@@ -42,7 +42,7 @@ export default function Controls({
 
   return (
     <div className={styles.controls}>
-      <span>Share</span>
+      {/* <span>Share</span> */}
       {postUserUid == auth.user.uid && <span onClick={editPost}>Edit</span>}
       {postUserUid == auth.user.uid && <span onClick={deletePost}>Delete</span>}
     </div>
