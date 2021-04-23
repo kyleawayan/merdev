@@ -8,10 +8,22 @@ interface Suggestion {
 // Imagine you have a list of languages that you'd like to autosuggest.
 const languages = [
   {
-    name: "cse-024",
+    name: "cse-005",
   },
   {
     name: "cse-015",
+  },
+  {
+    name: "cse-021",
+  },
+  {
+    name: "cse-022",
+  },
+  {
+    name: "cse-024",
+  },
+  {
+    name: "cse-030",
   },
 ];
 
