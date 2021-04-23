@@ -17,10 +17,10 @@ export default function Footer() {
         <div className={styles.footerChild}>
           <div className={styles.menuButtons}>
             <a
-              href="https://github.com/kyleawayan/merdev/issues/new/choose"
+              href="https://github.com/kyleawayan/merdev/issues"
               target="_blank"
             >
-              <div className={styles.notMenuButton}>Report an issue</div>
+              <div className={styles.notMenuButton}>Report Issues/Feedback</div>
             </a>
             <a href="https://github.com/kyleawayan/merdev" target="_blank">
               <div className={styles.notMenuButton}>GitHub</div>

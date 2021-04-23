@@ -1,4 +1,5 @@
 import * as functions from "firebase-functions";
+import removeMd = require("remove-markdown");
 
 import algoliasearch from "algoliasearch";
 
@@ -19,6 +20,11 @@ export const onQuestionCreate = functions.firestore
     const question = snap.data();
 
     question.objectID = context.params.questionId;
+    const cleanText = removeMd(question.markdown);
+    delete Object.assign(question, { ["text"]: question["markdown"] })[
+      "markdown"
+    ];
+    question.text = cleanText;
 
     const index = client.initIndex(ALGOLIA_INDEX_NAME);
     return index.saveObject(question);
@@ -30,6 +36,11 @@ export const onQuestionUpdate = functions.firestore
     const question = change.after.data();
 
     question.objectID = context.params.questionId;
+    const cleanText = removeMd(question.markdown);
+    delete Object.assign(question, { ["text"]: question["markdown"] })[
+      "markdown"
+    ];
+    question.text = cleanText;
 
     const index = client.initIndex(ALGOLIA_INDEX_NAME);
     return index.saveObject(question);
@@ -45,13 +56,16 @@ export const onQuestionDelete = functions.firestore
 export const onAnswerCreate = functions.firestore
   .document("questions/{questionId}/answers/{answerId}")
   .onCreate((snap, context) => {
-    const question = snap.data();
+    const answer = snap.data();
 
-    question.objectID = context.params.answerId;
+    answer.objectID = context.params.answerId;
+    const cleanText = removeMd(answer.markdown);
+    delete Object.assign(answer, { ["text"]: answer["markdown"] })["markdown"];
+    answer.text = cleanText;
 
     const index = client.initIndex(ALGOLIA_INDEX_NAME);
     return index.saveObject({
-      ...question,
+      ...answer,
       questionId: context.params.questionId,
     });
   });
@@ -59,13 +73,16 @@ export const onAnswerCreate = functions.firestore
 export const onAnswerUpdate = functions.firestore
   .document("questions/{questionId}/answers/{answerId}")
   .onUpdate((change, context) => {
-    const question = change.after.data();
+    const answer = change.after.data();
 
-    question.objectID = context.params.answerId;
+    answer.objectID = context.params.answerId;
+    const cleanText = removeMd(answer.markdown);
+    delete Object.assign(answer, { ["text"]: answer["markdown"] })["markdown"];
+    answer.text = cleanText;
 
     const index = client.initIndex(ALGOLIA_INDEX_NAME);
     return index.saveObject({
-      ...question,
+      ...answer,
       questionId: context.params.questionId,
     });
   });
