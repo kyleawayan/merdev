@@ -23,9 +23,11 @@ import { clearInbox } from "./inbox/clearInbox";
 import { userUidToDisplayName } from "./profile/userUidToDisplayName";
 import {
   onQuestionCreate,
-  onQuestionEdit,
+  onQuestionUpdate,
   onAnswerCreate,
   onAnswerUpdate,
+  onQuestionDelete,
+  onAnswerDelete,
 } from "./algolia/algolia";
 import { addDisplayNameToDb } from "./auth/addDisplayNameToDb";
 
@@ -44,8 +46,10 @@ exports.userUidToDisplayName = userUidToDisplayName;
 if (process.env.FUNCTIONS_EMULATOR != "true") {
   // algolia stuff
   exports.onQuestionCreate = onQuestionCreate;
-  exports.onQuestionEdit = onQuestionEdit;
+  exports.onQuestionUpdate = onQuestionUpdate;
+  exports.onQuestionDelete = onQuestionDelete;
   exports.onAnswerCreate = onAnswerCreate;
   exports.onAnswerUpdate = onAnswerUpdate;
+  exports.onAnswerDelete = onAnswerDelete;
 }
 exports.addDisplayNameToDb = addDisplayNameToDb;
