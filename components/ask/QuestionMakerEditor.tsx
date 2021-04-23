@@ -7,6 +7,7 @@ import "firebase/firestore";
 import { useRouter } from "next/router";
 import { questionDoc, answerDoc } from "../../utils/postDocs";
 import TagsField from "./TagsField";
+import useNavigationLock from "../../utils/useNavigationLock";
 
 const db = firebase.firestore();
 
@@ -33,6 +34,12 @@ export default function QuestionMakerEditor({
   const [title, setTitle] = useState(defaultTitle ?? "");
   const [value, setValue] = useState(defaultValue ?? "");
   const [tagField, setTagField] = useState(tags?.join(",") ?? "");
+
+  if (title || value || tagField) {
+    useNavigationLock(true);
+  } else {
+    useNavigationLock(false);
+  }
 
   const titleChange = (event: {
     target: { value: React.SetStateAction<string> }; // this type isn't right, change it later

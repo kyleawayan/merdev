@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import { useAuth } from "../../../utils/use-auth";
 import styles from "../../../styles/questionViewer/answers/YourAnswer.module.css";
+import useNavigationLock from "../../../utils/useNavigationLock";
 
 const db = firebase.firestore();
 
@@ -15,6 +16,12 @@ interface YourAnswerProps {
 export default function YourAnswer({ questionId, submitted }: YourAnswerProps) {
   const auth = useAuth();
   const [value, setValue] = useState("");
+
+  if (value) {
+    useNavigationLock(true);
+  } else {
+    useNavigationLock(false);
+  }
 
   const submitAnswer = () => {
     db.collection("questions")
