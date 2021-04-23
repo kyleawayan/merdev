@@ -24,7 +24,7 @@ export const onQuestionCreate = functions.firestore
     return index.saveObject(question);
   });
 
-export const onQuestionEdit = functions.firestore
+export const onQuestionUpdate = functions.firestore
   .document("questions/{questionId}")
   .onUpdate((change, context) => {
     const question = change.after.data();
@@ -33,6 +33,13 @@ export const onQuestionEdit = functions.firestore
 
     const index = client.initIndex(ALGOLIA_INDEX_NAME);
     return index.saveObject(question);
+  });
+
+export const onQuestionDelete = functions.firestore
+  .document("questions/{questionId}")
+  .onDelete((_, context) => {
+    const index = client.initIndex(ALGOLIA_INDEX_NAME);
+    return index.deleteObject(context.params.questionId);
   });
 
 export const onAnswerCreate = functions.firestore
@@ -61,4 +68,11 @@ export const onAnswerUpdate = functions.firestore
       ...question,
       questionId: context.params.questionId,
     });
+  });
+
+export const onAnswerDelete = functions.firestore
+  .document("questions/{questionId}/answers/{answerId}")
+  .onDelete((_, context) => {
+    const index = client.initIndex(ALGOLIA_INDEX_NAME);
+    return index.deleteObject(context.params.answerId);
   });
