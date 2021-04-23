@@ -92,7 +92,7 @@ export default function SignUp() {
                   />
                 </div>
                 <button type="submit" disabled={isSubmitting}>
-                  Submit
+                  {!isSubmitting ? "Submit" : "Loading..."}
                 </button>
               </form>
             )}

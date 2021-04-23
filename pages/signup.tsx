@@ -21,7 +21,12 @@ export default function SignUp() {
         <div className={styles.signUpContainer}>
           <h1>Join the UC Merced CSE community</h1>
           <Formik
-            initialValues={{ displayName: "", email: "", password: "" }}
+            initialValues={{
+              displayName: "",
+              email: "",
+              password: "",
+              confirmPassword: "",
+            }}
             validate={(values) => {
               const errors: Record<string, string> = {};
               if (!values.email) {
@@ -37,8 +42,11 @@ export default function SignUp() {
               if (!values.password) {
                 errors.password = "(Please put in a passowrd)";
               }
-              if (values.password.length <= 6) {
+              if (values.password.length < 6) {
                 errors.password = "(Needs to be at least 6 characters)";
+              }
+              if (values.confirmPassword != values.password) {
+                errors.confirmPassword = "(Does not match)";
               }
               return errors;
             }}
@@ -148,8 +156,26 @@ export default function SignUp() {
                     value={values.password}
                   />
                 </div>
+                <div>
+                  <label>
+                    Confirm password{" "}
+                    <span className={styles.warning}>
+                      {" "}
+                      {errors.confirmPassword &&
+                        touched.confirmPassword &&
+                        errors.confirmPassword}
+                    </span>
+                  </label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.confirmPassword}
+                  />
+                </div>
                 <button type="submit" disabled={isSubmitting}>
-                  Submit
+                  {!isSubmitting ? "Submit" : "Loading..."}
                 </button>
               </form>
             )}
