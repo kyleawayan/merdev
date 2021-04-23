@@ -1,5 +1,6 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
+import removeMd = require("remove-markdown");
 const db = admin.firestore();
 
 export const addQuestionCommentReplyToInbox = functions.firestore
@@ -15,6 +16,7 @@ export const addQuestionCommentReplyToInbox = functions.firestore
 
     const questionAuthorUid = questionDoc.author.userUid;
     const questionTitle = questionDoc.title;
+    const cleanText = removeMd(snapData.markdown);
 
     return db
       .collection("users")
@@ -23,8 +25,8 @@ export const addQuestionCommentReplyToInbox = functions.firestore
       .add({
         type: "comment",
         preview:
-          snapData.markdown.substring(0, 97) +
-            `${snapData.markdown.length > 97 ? "..." : ""}` ?? "",
+          cleanText.substring(0, 97) +
+            `${cleanText.length > 97 ? "..." : ""}` ?? "",
         questionTitle: questionTitle,
         timestamp: snapData.timestamp,
         questionId: questionId,
@@ -46,6 +48,7 @@ export const addAnswerReplyToInbox = functions.firestore
 
     const questionAuthorUid = questionDoc.author.userUid;
     const questionTitle = questionDoc.title;
+    const cleanText = removeMd(snapData.markdown);
 
     return db
       .collection("users")
@@ -54,8 +57,8 @@ export const addAnswerReplyToInbox = functions.firestore
       .add({
         type: "answer",
         preview:
-          snapData.markdown.substring(0, 97) +
-            `${snapData.markdown.length > 97 ? "..." : ""}` ?? "",
+          cleanText.substring(0, 97) +
+            `${cleanText.length > 97 ? "..." : ""}` ?? "",
         questionTitle: questionTitle,
         timestamp: snapData.timestamp,
         questionId: questionId,
@@ -89,6 +92,7 @@ export const addAnswerCommentToInbox = functions.firestore
 
     const answerAuthorUid = answerDoc.author.userUid;
     const questionTitle = questionDoc.title;
+    const cleanText = removeMd(snapData.markdown);
 
     return db
       .collection("users")
@@ -97,8 +101,8 @@ export const addAnswerCommentToInbox = functions.firestore
       .add({
         type: "comment",
         preview:
-          snapData.markdown.substring(0, 97) +
-            `${snapData.markdown.length > 97 ? "..." : ""}` ?? "",
+          cleanText.substring(0, 97) +
+            `${cleanText.length > 97 ? "..." : ""}` ?? "",
         questionTitle: questionTitle,
         timestamp: snapData.timestamp,
         questionId: questionId,
