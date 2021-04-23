@@ -2,6 +2,7 @@ import Menu from "../components/menu/Menu";
 import { ProvideAuth } from "../utils/use-auth.js";
 import NProgress from "nprogress";
 import Router from "next/router";
+import Footer from "../components/footer/Footer";
 
 import "../styles/globals.css";
 import "../styles/react-mde/react-mde-all.scss";
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
     <ProvideAuth>
       <Menu />
       <Component {...pageProps} />
+      <Footer />
     </ProvideAuth>
   );
 }

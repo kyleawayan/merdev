@@ -1,0 +1,91 @@
+.footerParent {
+  display: flex;
+  padding: 40px;
+  font-size: 12px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.footerChild {
+  margin-right: 40px;
+}
+
+.footerChild svg {
+  opacity: 0.3;
+}
+
+.name {
+  margin-top: 8px;
+  font-family: "Inter";
+  opacity: 0.3;
+  font-weight: 700;
+}
+
+.version {
+  opacity: 0.3;
+}
+
+.space {
+  height: 18px;
+}
+
+.menuButtons {
+  cursor: pointer;
+  font-family: "Inter";
+  margin-top: 2px;
+  font-weight: 700;
+}
+
+.menuButtons a {
+  text-decoration: none;
+}
+
+.menuSingleButton {
+  opacity: 0.3;
+  margin-bottom: 2px;
+}
+
+.menuSingleButton:hover {
+  opacity: 1 !important;
+  transition: 0.08s;
+}
+
+.notMenuButton {
+  font-size: 12px;
+  opacity: 0.3;
+  margin-bottom: 2px;
+}
+
+.notMenuButton:hover {
+  opacity: 1 !important;
+  transition: 0.08s;
+}
+
+.blankItem {
+  height: 10px;
+}
+
+@media only screen and (max-width: 780px) {
+  .footerParent {
+    padding: 20px;
+  }
+  .footerChild {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .footerParent {
+    padding: 20px;
+    display: block;
+  }
+  .footerChild {
+    margin-right: 0px;
+  }
+  .menuButtons {
+    margin-top: 20px;
+  }
+}
