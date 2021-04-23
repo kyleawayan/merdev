@@ -2,8 +2,13 @@ import * as functions from "firebase-functions";
 
 import algoliasearch from "algoliasearch";
 
-const ALGOLIA_ID = functions.config().algolia.app_id;
-const ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
+let ALGOLIA_ID = "";
+let ALGOLIA_ADMIN_KEY = "";
+
+if (process.env.FUNCTIONS_EMULATOR != "true") {
+  ALGOLIA_ID = functions.config().algolia.app_id;
+  ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
+}
 
 const ALGOLIA_INDEX_NAME = "questions";
 const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);

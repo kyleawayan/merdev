@@ -27,6 +27,7 @@ import {
   onAnswerCreate,
   onAnswerUpdate,
 } from "./algolia/algolia";
+import { addDisplayNameToDb } from "./auth/addDisplayNameToDb";
 
 exports.updateQuestionVoteCounter = updateQuestionVoteCounter;
 exports.updateAnswerVoteCounter = updateAnswerVoteCounter;
@@ -40,7 +41,11 @@ exports.addAnswerReplyToInbox = addAnswerReplyToInbox;
 exports.addAnswerCommentToInbox = addAnswerCommentToInbox;
 exports.clearInbox = clearInbox;
 exports.userUidToDisplayName = userUidToDisplayName;
-exports.onQuestionCreate = onQuestionCreate;
-exports.onQuestionEdit = onQuestionEdit;
-exports.onAnswerCreate = onAnswerCreate;
-exports.onAnswerUpdate = onAnswerUpdate;
+if (process.env.FUNCTIONS_EMULATOR != "true") {
+  // algolia stuff
+  exports.onQuestionCreate = onQuestionCreate;
+  exports.onQuestionEdit = onQuestionEdit;
+  exports.onAnswerCreate = onAnswerCreate;
+  exports.onAnswerUpdate = onAnswerUpdate;
+}
+exports.addDisplayNameToDb = addDisplayNameToDb;

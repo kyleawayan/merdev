@@ -4,11 +4,16 @@ import Center from "../components/utils/CenterWholePage";
 import styles from "../styles/signup/signUpAndSignIn.module.css";
 import { useAuth } from "../utils/use-auth";
 import { useRouter } from "next/router";
+import firebase from "firebase/app";
+import "firebase/firestore";
+
+const db = firebase.firestore();
 
 export default function SignUp() {
   const auth = useAuth();
   const router = useRouter();
   const [emailInUse, setEmailInUse] = useState(false);
+  const [displayNameInUse, setDisplayNameInUse] = useState(false);
 
   return (
     <div style={{ backgroundColor: "var(--secondary-bg)" }}>
@@ -37,29 +42,39 @@ export default function SignUp() {
               }
               return errors;
             }}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={async (values, { setSubmitting }) => {
               setEmailInUse(false);
-              auth
-                .signup(values.email, values.password, values.displayName)
-                .then(() => {
-                  setSubmitting(false);
-                  router.push("/");
-                })
-                .catch(
-                  (error: {
-                    a: unknown;
-                    code: string;
-                    message: string;
-                    stack: string;
-                  }) => {
+              setDisplayNameInUse(false);
+              const displayNameDoc = await db
+                .collection("displayNames")
+                .doc(values.displayName)
+                .get();
+              if (!displayNameDoc.exists) {
+                auth
+                  .signup(values.email, values.password, values.displayName)
+                  .then(() => {
                     setSubmitting(false);
-                    if ((error.code = "auth/email-already-in-use")) {
-                      setEmailInUse(true);
-                    } else {
-                      console.error(error);
+                    router.push("/");
+                  })
+                  .catch(
+                    (error: {
+                      a: unknown;
+                      code: string;
+                      message: string;
+                      stack: string;
+                    }) => {
+                      setSubmitting(false);
+                      if ((error.code = "auth/email-already-in-use")) {
+                        setEmailInUse(true);
+                      } else {
+                        console.error(error);
+                      }
                     }
-                  }
-                );
+                  );
+              } else {
+                setSubmitting(false);
+                setDisplayNameInUse(true);
+              }
             }}
           >
             {({
@@ -76,6 +91,11 @@ export default function SignUp() {
                 {emailInUse && (
                   <div className={styles.warning}>
                     The email address is already in use by another account.
+                  </div>
+                )}
+                {displayNameInUse && (
+                  <div className={styles.warning}>
+                    The display name is already in use by another account.
                   </div>
                 )}
                 <div>

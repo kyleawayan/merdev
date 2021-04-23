@@ -1,6 +1,7 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 
+// to do: get rid of this function and use the existing displayName db collection
 export const userUidToDisplayName = functions.https.onRequest((req, res) => {
   const requestedUserUid = req.query.userUid as string;
   if (!requestedUserUid) {
