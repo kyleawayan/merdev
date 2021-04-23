@@ -21,6 +21,12 @@ import {
 } from "./inbox/addReplyToInbox";
 import { clearInbox } from "./inbox/clearInbox";
 import { userUidToDisplayName } from "./profile/userUidToDisplayName";
+import {
+  onQuestionCreate,
+  onQuestionEdit,
+  onAnswerCreate,
+  onAnswerUpdate,
+} from "./algolia/algolia";
 
 exports.updateQuestionVoteCounter = updateQuestionVoteCounter;
 exports.updateAnswerVoteCounter = updateAnswerVoteCounter;
@@ -34,3 +40,7 @@ exports.addAnswerReplyToInbox = addAnswerReplyToInbox;
 exports.addAnswerCommentToInbox = addAnswerCommentToInbox;
 exports.clearInbox = clearInbox;
 exports.userUidToDisplayName = userUidToDisplayName;
+exports.onQuestionCreate = onQuestionCreate;
+exports.onQuestionEdit = onQuestionEdit;
+exports.onAnswerCreate = onAnswerCreate;
+exports.onAnswerUpdate = onAnswerUpdate;
