@@ -3,9 +3,10 @@ import { GetServerSideProps } from "next";
 import styles from "../../styles/profile/Profile.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useAuth } from "../../utils/use-auth";
+import Head from "next/head";
 import firebase from "firebase/app";
 import "firebase/storage";
-import { useAuth } from "../../utils/use-auth";
 
 const storage = firebase.storage();
 
@@ -35,6 +36,30 @@ export default function Profile({ displayName }: ProfilePageProps) {
 
   return (
     <div className={styles.profile}>
+      <Head>
+        <title>{displayName}'s profile on merdev</title>
+        <meta
+          name="description"
+          content={`Check out ${displayName}'s profile on merdev`}
+        />
+        <meta
+          property="og:title"
+          content={`Check out ${displayName}'s profile on merdev`}
+        />
+        <meta
+          property="og:image"
+          content={`https://storage.cloud.google.com/merdev-7b539.appspot.com/avatars/${router.query.id}.jpg`}
+        />
+        <meta
+          property="og:description"
+          content={`Check out ${displayName}'s profile on merdev`}
+        />
+        <meta property="og:site_name" content="merdev" />
+        <meta
+          name="twitter:title"
+          content={`${displayName}'s profile on merdev`}
+        />
+      </Head>
       <div className={styles.pfpContainer}>
         {pfpUrl && <Image src={pfpUrl} layout="fill" objectFit="cover" />}
       </div>

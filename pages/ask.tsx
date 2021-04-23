@@ -5,6 +5,7 @@ import styles from "../styles/ask/ask.module.css";
 import { useAuth } from "../utils/use-auth";
 import { useRouter } from "next/router";
 import debounce from "debounce";
+import Head from "next/head";
 
 export default function Ask() {
   const auth = useAuth();
@@ -35,6 +36,14 @@ export default function Ask() {
 
   return (
     <div style={{ height: "800px" }}>
+      <Head>
+        <title>Ask a Question on merdev</title>
+        <meta name="description" content="Ask a question on merdev" />
+        <meta property="og:title" content="Ask a Question on merdev" />
+        <meta property="og:description" content="Ask a Question on merdev" />
+        <meta property="og:site_name" content="merdev" />
+        <meta name="twitter:title" content="Ask a question on merdev" />
+      </Head>
       <div className="globalContainer">
         <div className={styles.askContainer}>
           <QuestionMakerEditor />

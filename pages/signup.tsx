@@ -6,6 +6,7 @@ import { useAuth } from "../utils/use-auth";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import Head from "next/head";
 
 const db = firebase.firestore();
 
@@ -17,6 +18,14 @@ export default function SignUp() {
 
   return (
     <div style={{ backgroundColor: "var(--secondary-bg)" }}>
+      <Head>
+        <title>Sign Up - merdev</title>
+        <meta name="description" content="Create a merdev account" />
+        <meta property="og:title" content="Create a merdev account" />
+        <meta property="og:description" content="Create a merdev account" />
+        <meta property="og:site_name" content="merdev" />
+        <meta name="twitter:title" content="Sign Up - merdev" />
+      </Head>
       <Center>
         <div className={styles.signUpContainer}>
           <h1>Join the UC Merced CSE community</h1>

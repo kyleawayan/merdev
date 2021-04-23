@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import QuestionMakerEditor from "../components/ask/QuestionMakerEditor";
 import { questionDoc, answerDoc } from "../utils/postDocs";
+import Head from "next/head";
 
 export default function Edit() {
   const router = useRouter();
@@ -30,6 +31,9 @@ export default function Edit() {
 
   return (
     <div className="globalContainer">
+      <Head>
+        <title>Edit Question</title>
+      </Head>
       <QuestionMakerEditor
         defaultTitle={"title" in data ? data.title : ""}
         defaultValue={data.markdown}

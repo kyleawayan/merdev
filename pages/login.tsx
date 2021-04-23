@@ -4,6 +4,7 @@ import Center from "../components/utils/CenterWholePage";
 import styles from "../styles/signup/signUpAndSignIn.module.css";
 import { useAuth } from "../utils/use-auth";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function SignUp() {
   const auth = useAuth();
@@ -12,6 +13,14 @@ export default function SignUp() {
 
   return (
     <div style={{ backgroundColor: "var(--secondary-bg)" }}>
+      <Head>
+        <title>Log In - merdev</title>
+        <meta name="description" content="Log in to merdev" />
+        <meta property="og:title" content="Log in to merdev" />
+        <meta property="og:description" content="Log in to merdev" />
+        <meta property="og:site_name" content="merdev" />
+        <meta name="twitter:title" content="Log In - merdev" />
+      </Head>
       <Center>
         <div className={styles.signUpContainer}>
           <h1>Sign in to the UC Merced CSE community</h1>
