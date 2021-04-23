@@ -9,7 +9,7 @@ export default function Home() {
   const auth = useAuth();
   return (
     <div>
-      <div className="globalContainer">
+      <div className="globalContainer" style={{ overflow: "hidden" }}>
         {!auth.user && (
           <div>
             <HomePageHeader />
