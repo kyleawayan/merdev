@@ -12,22 +12,12 @@ const storage = firebase.storage();
 
 interface ProfilePageProps {
   displayName: string;
+  pfpUrl: string;
 }
 
-export default function Profile({ displayName }: ProfilePageProps) {
-  const [pfpUrl, setPfpUrl] = useState("");
+export default function Profile({ displayName, pfpUrl }: ProfilePageProps) {
   const auth = useAuth();
   const router = useRouter();
-
-  useEffect(() => {
-    storage
-      .ref(`avatars/${router.query.id}.jpg`)
-      .getDownloadURL()
-      .then((url) => {
-        setPfpUrl(url);
-      })
-      .catch(console.warn);
-  }, [router.query.id]);
 
   const signOut = () => {
     auth.signout();
@@ -46,10 +36,7 @@ export default function Profile({ displayName }: ProfilePageProps) {
           property="og:title"
           content={`Check out ${displayName}'s profile on merdev`}
         />
-        <meta
-          property="og:image"
-          content={`https://storage.cloud.google.com/merdev-7b539.appspot.com/avatars/${router.query.id}.jpg`}
-        />
+        <meta property="og:image" content={pfpUrl} />
         <meta
           property="og:description"
           content={`Check out ${displayName}'s profile on merdev`}
@@ -91,10 +78,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const json = await res.json();
   const displayName = json.displayName;
+  const pfpUrl = json.pfpUrl;
 
   return {
     props: {
       displayName,
+      pfpUrl,
     },
   };
 };
