@@ -18,20 +18,24 @@ export const userUidToDisplayName = functions.https.onRequest(
 
     let pfpUrl = "";
 
-    const storageRef = admin
-      .storage()
-      .bucket()
-      .file(`avatars/${requestedUserUid}.jpg`);
+    try {
+      const storageRef = admin
+        .storage()
+        .bucket()
+        .file(`avatars/${requestedUserUid}.jpg`);
 
-    const userHasPfp = await storageRef.exists(); // this is given in an array of booleans
+      const userHasPfp = await storageRef.exists(); // this is given in an array of booleans
 
-    if (userHasPfp[0]) {
-      pfpUrl = (
-        await storageRef.getSignedUrl({
-          action: "read",
-          expires: todaysDate.setHours(todaysDate.getHours() + 1),
-        })
-      )[0]; // signed urls are also given in an array
+      if (userHasPfp[0]) {
+        pfpUrl = (
+          await storageRef.getSignedUrl({
+            action: "read",
+            expires: todaysDate.setHours(todaysDate.getHours() + 1),
+          })
+        )[0]; // signed urls are also given in an array
+      }
+    } catch (e) {
+      console.error(e);
     }
 
     admin
