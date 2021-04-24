@@ -15,8 +15,8 @@ export default function HomePageHelpSec() {
         <h1>Get General Programming Help</h1>
       </b>
       <p className={styles.homeparainverted}>
-        Since Merdev acts as a forum, it is not limited to only class topics and
-        projects. Merdev is a community built to help each other, so feel free
+        Since merdev acts as a forum, it is not limited to only class topics and
+        projects. merdev is a community built to help each other, so feel free
         to ask any questions you might have with general programming!
       </p>
       <div className={styles.inlineplacement}>

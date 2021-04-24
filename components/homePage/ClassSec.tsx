@@ -13,10 +13,10 @@ export default function HomePageClassSec() {
       <div className={styles.sectioncontainer}>
         <hr className={styles.homehr}></hr>
         <b>
-          <h1>Imense Class Support</h1>
+          <h1>Immense Class Support</h1>
         </b>
         <p className={styles.homeparainverted}>
-          Merdev is designed to help UC Merced computer science students
+          merdev is designed to help UC Merced computer science students
           regardless of the course they are taking. <br /> We provide class
           support but not limited to:{" "}
         </p>
