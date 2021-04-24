@@ -1,6 +1,6 @@
 {
   "name": "merdev",
-  "version": "0.4.0",
+  "version": "0.4.01",
   "private": true,
   "scripts": {
     "firedev": "concurrently -n \"ts\",\"emulator\",\"next.js\" -c \"blue,yellow,white\" \"cd functions && npm run dev\" \"firebase emulators:start && echo 'Do not worry about the error above. The emulators were most likely all stopped.' && echo 'If you have a problem launching the emulator again, use the command it has given you to kill the process.' && echo 'Press Ctrl+C again to exit.'\" \"cross-env FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8081 NEXT_PUBLIC_FIREDEV=true next dev\"",
