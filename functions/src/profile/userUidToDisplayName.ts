@@ -30,7 +30,7 @@ export const userUidToDisplayName = functions.https.onRequest(
         pfpUrl = (
           await storageRef.getSignedUrl({
             action: "read",
-            expires: todaysDate.setHours(todaysDate.getHours() + 1),
+            expires: todaysDate.setFullYear(todaysDate.getFullYear() + 4),
           })
         )[0]; // signed urls are also given in an array
       }

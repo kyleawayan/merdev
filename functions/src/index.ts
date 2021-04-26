@@ -30,6 +30,7 @@ import {
   onAnswerDelete,
 } from "./algolia/algolia";
 import { addDisplayNameToDb } from "./auth/addDisplayNameToDb";
+import { discordWebhook } from "./discordWebhook/discordWebhook";
 
 exports.updateQuestionVoteCounter = updateQuestionVoteCounter;
 exports.updateAnswerVoteCounter = updateAnswerVoteCounter;
@@ -53,3 +54,6 @@ if (process.env.FUNCTIONS_EMULATOR != "true") {
   exports.onAnswerDelete = onAnswerDelete;
 }
 exports.addDisplayNameToDb = addDisplayNameToDb;
+if (process.env.FUNCTIONS_EMULATOR != "true") {
+  exports.discordWebhook = discordWebhook;
+}
