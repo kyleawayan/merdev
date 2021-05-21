@@ -8,7 +8,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.footerChild}>
           <Logo />
-          <div className={styles.version}>v0.4.2</div>
+          <div className={styles.version}>v0.4.3</div>
         </div>
         <div className={styles.footerChild}>
           <div className={styles.menuButtons}>

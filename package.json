@@ -1,12 +1,11 @@
 {
   "name": "merdev",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "private": true,
   "scripts": {
     "firedev": "concurrently -n \"ts\",\"emulator\",\"next.js\" -c \"blue,yellow,white\" \"cd functions && npm run dev\" \"firebase emulators:start && echo 'Do not worry about the error above. The emulators were most likely all stopped.' && echo 'If you have a problem launching the emulator again, use the command it has given you to kill the process.' && echo 'Press Ctrl+C again to exit.'\" \"cross-env FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8081 NEXT_PUBLIC_FIREDEV=true next dev\"",
     "dev": "cross-env NEXT_PUBLIC_FIREDEV=false && next dev",
     "build": "cross-env NEXT_PUBLIC_FIREDEV=false && next build",
-    "vercelbuild": "cross-env NEXT_PUBLIC_FIREDEV=false && rm -rf functions && next build",
     "start": "cross-env NEXT_PUBLIC_FIREDEV=false && next start"
   },
   "dependencies": {
@@ -18,7 +17,7 @@
     "framer-motion": "^4.1.3",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.29.1",
-    "next": "10.1.3",
+    "next": "^10.2.2",
     "nprogress": "^0.2.0",
     "react": "17.0.2",
     "react-autosuggest": "^10.1.0",
@@ -44,7 +43,7 @@
     "@types/react-syntax-highlighter": "^13.5.0",
     "concurrently": "^6.0.1",
     "cross-env": "^7.0.3",
-    "cypress": "^7.0.1",
+    "cypress": "7.3.0",
     "typescript": "^4.2.3"
   }
 }

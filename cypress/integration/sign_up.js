@@ -15,9 +15,16 @@ describe("Test Sign Up", function () {
 
     cy.get("form")
       .find("input")
-      .filter('[type="password"]')
+      .filter('[name="password"]')
       .type("mymom123", { delay: 100 })
       .should("have.value", "mymom123");
+
+    cy.get("form")
+      .find("input")
+      .filter('[name="confirmPassword"]')
+      .type("mymom123", { delay: 100 })
+      .should("have.value", "mymom123");
+
     cy.get("form").find("button").filter('[type="submit"]').click();
   });
 });
