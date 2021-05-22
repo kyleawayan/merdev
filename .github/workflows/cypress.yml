@@ -7,10 +7,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        env:
+          NEXT_PUBLIC_APIKEY: ${{ secrets.NEXT_PUBLIC_APIKEY }}
+          NEXT_PUBLIC_AUTHDOMAIN: ${{ secrets.NEXT_PUBLIC_AUTHDOMAIN }}
+          NEXT_PUBLIC_PROJECTID: ${{ secrets.NEXT_PUBLIC_PROJECTID }}
+          NEXT_PUBLIC_APPID: ${{ secrets.NEXT_PUBLIC_APPID }}
+          NEXT_PUBLIC_STORAGEBUCKET: ${{ secrets.NEXT_PUBLIC_STORAGEBUCKET }}
         with:
-          env: NEXT_PUBLIC_APIKEY=${{ secrets.NEXT_PUBLIC_APIKEY }},NEXT_PUBLIC_AUTHDOMAIN=${{ secrets.NEXT_PUBLIC_AUTHDOMAIN }},NEXT_PUBLIC_PROJECTID=${{ secrets.NEXT_PUBLIC_PROJECTID }},NEXT_PUBLIC_APPID=${{ secrets.NEXT_PUBLIC_APPID }},NEXT_PUBLIC_STORAGEBUCKET=${{ secrets.NEXT_PUBLIC_STORAGEBUCKET }}
           build: yarn buildDev
           start: yarn ciCypress
           config: video=false,screenshotOnRunFailure=false
