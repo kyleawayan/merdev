@@ -19,4 +19,5 @@ jobs:
         with:
           build: yarn buildDev
           start: yarn ciCypress
+          wait-on: "http://localhost:4000"
           config: video=false,screenshotOnRunFailure=false
