@@ -10,5 +10,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          build: yarn buildDev
           start: yarn ciCypress
           config: video=false,screenshotOnRunFailure=false
