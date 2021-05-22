@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "cd functions && npm install && cd ..",
     "firedev": "concurrently -n \"ts\",\"emulator\",\"next.js\" -c \"blue,yellow,white\" \"cd functions && npm run dev\" \"firebase emulators:start && echo 'Do not worry about the error above. The emulators were most likely all stopped.' && echo 'If you have a problem launching the emulator again, use the command it has given you to kill the process.' && echo 'Press Ctrl+C again to exit.'\" \"cross-env FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8081 NEXT_PUBLIC_FIREDEV=true next dev\"",
-    "ciCypress": "cd functions && npm run build && cd .. && cross-env NEXT_PUBLIC_FIREDEV=true && next build && concurrently \"cross-env FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8081 NEXT_PUBLIC_FIREDEV=true && next start\" \"firebase emulators:start\"",
+    "ciCypress": "cross-env NEXT_PUBLIC_FIREDEV=true && cd functions && npm run build && cd .. && next build && concurrently \"cross-env FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8081 && next start\" \"firebase emulators:start\"",
     "dev": "cross-env NEXT_PUBLIC_FIREDEV=false && next dev",
     "build": "cross-env NEXT_PUBLIC_FIREDEV=false && next build",
     "start": "cross-env NEXT_PUBLIC_FIREDEV=false && next start"
